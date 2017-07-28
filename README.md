@@ -28,7 +28,7 @@ import 'vueleton/lib/dropdown.css';
 
 ``` js
 import { Dropdown } from 'vueleton';
-import 'vueleton/index.css';
+import 'vueleton/lib/index.css';
 ```
 
 Supported components

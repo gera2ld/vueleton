@@ -44,6 +44,7 @@ targets.push(merge(base, {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
+      title: 'Vueleton',
     }),
     new ExtractTextPlugin('[name].css'),
   ],
