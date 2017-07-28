@@ -1,0 +1,42 @@
+{
+  "name": "vueleton",
+  "version": "0.0.1",
+  "description": "Vue components with only core features.",
+  "main": "lib",
+  "scripts": {
+    "build": "webpack --config scripts/webpack.conf.js"
+  },
+  "keywords": [
+    "vue",
+    "skeleton"
+  ],
+  "author": "Gerald <i@gerald.top>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.3.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "html-webpack-plugin": "^2.29.0",
+    "postcss-scss": "^1.0.2",
+    "precss": "^2.0.0",
+    "vue": "^2.4.2",
+    "vue-loader": "^13.0.2",
+    "vue-template-compiler": "^2.4.2",
+    "webpack": "^3.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gera2ld/vueleton.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gera2ld/vueleton/issues"
+  },
+  "homepage": "https://github.com/gera2ld/vueleton#readme"
+}

@@ -1,0 +1,5 @@
+/docs
+/lib
+*.log
+*.lock
+node_modules
