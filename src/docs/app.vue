@@ -2,13 +2,18 @@
   <div class="demo">
     <nav>
       <h1>Vueleton</h1>
-      <div
-        class="demo-nav-item"
-        v-for="item in items"
-        :class="{ active: current === item }"
-        v-text="getMeta(item, 'name')"
-        @click="current = item">
-      </div>
+      <section>
+        <div
+          class="demo-nav-item"
+          v-for="item in items"
+          :class="{ active: current === item }"
+          v-text="getMeta(item, 'name')"
+          @click="current = item">
+        </div>
+      </section>
+      <footer>
+        &copy; Gerald 2017
+      </footer>
     </nav>
     <div>
       <h2 v-text="getMeta(current, 'name')"></h2>
@@ -65,7 +70,13 @@ body,
   }
   > nav {
     flex: 0 0 200px;
+    display: flex;
+    flex-direction: column;
     border-right: 1px solid #bbb;
+    > section {
+      flex: auto;
+      overflow-y: auto;
+    }
   }
   &-nav-item {
     color: #333;
