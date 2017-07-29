@@ -38,6 +38,7 @@ export default {
 
 <style>
 .vl-modal {
+  z-index: 10;
   &-backdrop {
     position: fixed;
     top: 0;
