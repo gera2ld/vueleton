@@ -1,6 +1,6 @@
 {
   "name": "vueleton",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Vue components with only core features.",
   "main": "lib",
   "scripts": {
