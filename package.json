@@ -5,7 +5,9 @@
   "main": "lib",
   "scripts": {
     "build": "webpack --config scripts/webpack.conf.js",
-    "dev": "webpack --config scripts/webpack.conf.js -w"
+    "dev": "webpack --config scripts/webpack.conf.js -w",
+    "lint": "eslint --ext .js,.vue .",
+    "deploy": "sh scripts/deploy.sh"
   },
   "keywords": [
     "vue",
@@ -22,6 +24,10 @@
     "babel-preset-env": "^1.6.0",
     "css-loader": "^0.28.4",
     "eslint": "^4.3.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-plugin-html": "^3.1.1",
+    "eslint-plugin-import": "^2.7.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "highlight.js": "^9.12.0",
@@ -35,6 +41,9 @@
     "vue-loader": "^13.0.2",
     "vue-template-compiler": "^2.4.2",
     "webpack": "^3.4.1"
+  },
+  "peerDependencies": {
+    "vue": 2
   },
   "repository": {
     "type": "git",

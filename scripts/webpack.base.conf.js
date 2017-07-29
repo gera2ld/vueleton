@@ -16,7 +16,7 @@ function resolve(dir) {
 module.exports = {
   output: {
     path: resolve(DIST),
-    publicPath: '/',
+    publicPath: '',
     filename: '[name].js',
     libraryTarget: 'commonjs',
   },
