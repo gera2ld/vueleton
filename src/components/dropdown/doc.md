@@ -9,6 +9,11 @@
 </dropdown>
 ```
 
+```js
+import Dropdown from 'vueleton/lib/dropdown';
+import 'vueleton/lib/dropdown.css';
+```
+
 ### API
 
 Show a menu next to the toggle.

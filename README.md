@@ -9,28 +9,4 @@ Vueleton
 Vueleton is a component library for [Vue.js](https://vuejs.org/) 2.
 It contains useful components with simple style which are easy to be extended.
 
-Installation
----
-``` sh
-$ npm i vueleton
-```
-
-Usage
----
-1. The recommended way: only import the component to be used.
-
-``` js
-import Dropdown from 'vueleton/lib/dropdown';
-import 'vueleton/lib/dropdown.css';
-```
-
-2. Import everything and pick the one to be used.
-
-``` js
-import { Dropdown } from 'vueleton';
-import 'vueleton/lib/index.css';
-```
-
-Supported components
----
-- Dropdown
+For more details, see [document](https://gera2ld.github.io/vueleton/).

@@ -9,6 +9,11 @@
 </modal>
 ```
 
+```js
+import Dropdown from 'vueleton/lib/modal';
+import 'vueleton/lib/modal.css';
+```
+
 ### API
 
 Show a modal with optional backdrop.

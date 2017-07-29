@@ -1,6 +1,6 @@
 set -e
 rm -rf docs
-npm run build
+npm run doc
 cd docs
 git init
 git config user.name Gerald

@@ -1,10 +1,6 @@
-import Dropdown from '../components/dropdown/demo';
-import Modal from '../components/modal/demo';
+const requireDemo = require.context('../components', true, /\/\w+\/demo\.vue$/);
 
-const items = [
-  Dropdown,
-  Modal,
-];
+const items = requireDemo.keys().map(key => requireDemo(key).default);
 
 items.forEach(item => {
   // eslint-disable-next-line prefer-template

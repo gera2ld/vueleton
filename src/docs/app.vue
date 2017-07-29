@@ -6,6 +6,7 @@
         <router-link
           class="demo-nav-item"
           v-for="item in items"
+          :key="item.meta.name"
           :class="{ active: current === item }"
           :to="item.meta.path"
           v-text="item.meta.name">
@@ -69,8 +70,11 @@ body,
   display: flex;
   margin: 0 auto;
   > * {
-    flex: 1;
     padding: 20px;
+  }
+  > div {
+    flex: 1;
+    overflow-y: auto;
   }
   > nav {
     flex: 0 0 200px;
@@ -108,5 +112,17 @@ th,
 td {
   padding: 3px 5px;
   border: 1px solid #bbb;
+}
+
+blockquote {
+  margin: 16px 0;
+  padding: 16px;
+  background: #f0f0f0;
+  > p:first-child {
+    margin-top: 0;
+  }
+  > p:last-child {
+    margin-bottom: 0;
+  }
 }
 </style>

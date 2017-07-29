@@ -8,9 +8,13 @@ import hljs from 'highlight.js/lib/highlight';
 import 'highlight.js/styles/github.css';
 import xml from 'highlight.js/lib/languages/xml';
 import javascript from 'highlight.js/lib/languages/javascript';
+import shell from 'highlight.js/lib/languages/shell';
+import bash from 'highlight.js/lib/languages/bash';
 
 hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('shell', shell);
+hljs.registerLanguage('bash', bash);
 
 export default {
   props: ['md'],

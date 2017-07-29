@@ -18,7 +18,6 @@ module.exports = {
     path: resolve(DIST),
     publicPath: '',
     filename: '[name].js',
-    libraryTarget: 'commonjs',
   },
   resolve: {
     extensions: ['.js', '.vue'],
