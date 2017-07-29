@@ -39,6 +39,7 @@ targets.push(merge(base, {
   },
   output: {
     path: path.resolve('docs'),
+    filename: '[name]-[chunkhash:8].js',
     libraryTarget: 'var',
   },
   plugins: [
@@ -46,7 +47,8 @@ targets.push(merge(base, {
       filename: 'index.html',
       title: 'Vueleton',
     }),
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin('[name]-[chunkhash:8].css'),
+    new webpack.optimize.UglifyJsPlugin(),
   ],
-  devtool: 'cheap-module-eval-source-map',
+  // devtool: 'cheap-module-eval-source-map',
 }));
