@@ -25,7 +25,7 @@ targets.push(merge(base, {
 
 targets.push(merge(base, {
   entry: {
-    index: 'src/index.js',
+    index: 'src/components',
   },
   plugins: [
     new FriendlyErrorsPlugin(),
@@ -48,4 +48,5 @@ targets.push(merge(base, {
     }),
     new ExtractTextPlugin('[name].css'),
   ],
+  devtool: 'cheap-module-eval-source-map',
 }));

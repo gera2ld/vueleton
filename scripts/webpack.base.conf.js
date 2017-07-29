@@ -46,6 +46,10 @@ module.exports = {
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test')]
       },
+      {
+        test: /\.md$/,
+        loader: 'raw-loader',
+      },
       styleRule({
         fallback: 'vue-style-loader',
         loaders: ['postcss-loader'],

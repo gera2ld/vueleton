@@ -1,37 +1,48 @@
 <template>
   <div class="demo">
     <nav>
-      <h2>Vueleton</h2>
+      <h1>Vueleton</h1>
       <div
         class="demo-nav-item"
         v-for="item in items"
         :class="{ active: current === item }"
-        v-text="item"
+        v-text="getMeta(item, 'name')"
         @click="current = item">
       </div>
     </nav>
     <div>
-      <h3 v-text="current"></h3>
+      <h2 v-text="getMeta(current, 'name')"></h2>
       <component :is="current"></component>
+      <doc :md="getMeta(current, 'doc')"></doc>
     </div>
   </div>
 </template>
 
 <script>
+import Doc from './components/doc';
 import Dropdown from '../components/dropdown/demo';
 
 const components = {
   Dropdown,
 };
 
+const items = Object.keys(components).map(key => components[key]);
+
 export default {
-  components,
+  components: Object.assign({
+    Doc,
+  }, components),
   data() {
-    const items = Object.keys(components);
     return {
       items,
       current: items[0],
     };
+  },
+  methods: {
+    getMeta(item, key) {
+      const meta = item && item.meta;
+      return meta && meta[key];
+    },
   },
 };
 </script>
@@ -64,5 +75,15 @@ body,
       color: #83d6de;
     }
   }
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 3px 5px;
+  border: 1px solid #bbb;
 }
 </style>

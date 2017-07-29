@@ -4,7 +4,8 @@
   "description": "Vue components with only core features.",
   "main": "lib",
   "scripts": {
-    "build": "webpack --config scripts/webpack.conf.js"
+    "build": "webpack --config scripts/webpack.conf.js",
+    "dev": "webpack --config scripts/webpack.conf.js -w"
   },
   "keywords": [
     "vue",
@@ -23,9 +24,13 @@
     "eslint": "^4.3.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "highlight.js": "^9.12.0",
     "html-webpack-plugin": "^2.29.0",
+    "marked": "^0.3.6",
+    "postcss-loader": "^2.0.6",
     "postcss-scss": "^1.0.2",
     "precss": "^2.0.0",
+    "raw-loader": "^0.5.1",
     "vue": "^2.4.2",
     "vue-loader": "^13.0.2",
     "vue-template-compiler": "^2.4.2",
