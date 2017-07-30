@@ -22,7 +22,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
-      src: resolve('src'),
+      '#': resolve('src'),
     }
   },
   node: {
@@ -43,7 +43,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('docs/src')]
       },
       {
         test: /\.md$/,

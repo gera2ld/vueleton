@@ -41,6 +41,8 @@ export default {
 
 <style>
 .demo-modal-body {
+  width: 200px;
+  margin: 100px auto 0;
   padding: 30px;
   background: white;
 }

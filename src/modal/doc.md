@@ -10,7 +10,7 @@
 ```
 
 ```js
-import Dropdown from 'vueleton/lib/modal';
+import Modal from 'vueleton/lib/modal';
 import 'vueleton/lib/modal.css';
 ```
 

@@ -1,7 +1,8 @@
 set -e
-rm -rf docs
-npm run doc
 cd docs
+rm -rf dist
+npm run build
+cd dist
 git init
 git config user.name Gerald
 git config user.email gera2ld@163.com

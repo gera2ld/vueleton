@@ -4,10 +4,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const base = require('./webpack.base.conf');
 const { merge } = require('./utils');
 
-const entry = fs.readdirSync('src/components')
-.filter(item => fs.statSync(`src/components/${item}`).isDirectory())
-.reduce((res, item) => Object.assign(res, { [item]: `src/components/${item}` }), {
-  index: 'src/components',
+const entry = fs.readdirSync('src')
+.filter(item => fs.statSync(`src/${item}`).isDirectory())
+.reduce((res, item) => Object.assign(res, { [item]: `#/${item}` }), {
+  index: '#',
 });
 
 const targets = [];

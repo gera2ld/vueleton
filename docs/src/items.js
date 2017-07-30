@@ -1,4 +1,4 @@
-const requireDemo = require.context('../components', true, /\/\w+\/demo\.vue$/);
+const requireDemo = require.context('#', true, /\/\w+\/demo\.vue$/);
 
 const items = requireDemo.keys().map(key => requireDemo(key).default);
 
