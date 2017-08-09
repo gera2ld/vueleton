@@ -86,9 +86,6 @@ export default {
   }
   &-menu {
     position: absolute;
-    padding: 8px;
-    border: 1px solid #bbb;
-    background: white;
     z-index: 10;
     .vl-dropdown-right & {
       right: 0;

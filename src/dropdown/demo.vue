@@ -50,9 +50,6 @@ export default {
 }
 
 .demo-dropdown {
-  > .vl-dropdown-menu {
-    padding: 0;
-  }
   &-item {
     padding: 8px 30px;
     white-space: nowrap;
@@ -60,6 +57,10 @@ export default {
     &:hover {
       background: #f0f0f0;
     }
+  }
+  .vl-dropdown-menu {
+    border: 1px solid #bbb;
+    background: white;
   }
 }
 </style>
