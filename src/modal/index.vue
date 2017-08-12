@@ -51,5 +51,8 @@ export default {
     background: rgba(0,0,0,.4);
     z-index: -1;
   }
+  &-content {
+    display: inline-block;
+  }
 }
 </style>
