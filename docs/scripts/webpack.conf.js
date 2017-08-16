@@ -30,4 +30,7 @@ targets.push(merge(base, {
     new webpack.optimize.UglifyJsPlugin(),
   ],
   devtool: IS_DEV ? 'cheap-module-eval-source-map' : false,
+  externals: {
+    codemirror: false,
+  },
 }));

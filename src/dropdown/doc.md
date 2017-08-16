@@ -1,16 +1,16 @@
 ### Usage
 
 ``` html
-<dropdown :closeAfterClick="true">
+<vl-dropdown :closeAfterClick="true">
   <button slot="toggle">Toggle</button>
   <div class="menu-item">Menu item 1</div>
   <div class="menu-item">Menu item 2</div>
   <div class="menu-item">Menu item 3</div>
-</dropdown>
+</vl-dropdown>
 ```
 
-```js
-import Dropdown from 'vueleton/lib/dropdown';
+``` js
+import VlDropdown from 'vueleton/lib/dropdown';
 import 'vueleton/lib/dropdown.css';
 ```
 

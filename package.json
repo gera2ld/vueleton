@@ -48,5 +48,8 @@
   "bugs": {
     "url": "https://github.com/gera2ld/vueleton/issues"
   },
-  "homepage": "https://github.com/gera2ld/vueleton#readme"
+  "homepage": "https://github.com/gera2ld/vueleton#readme",
+  "dependencies": {
+    "codemirror": "*"
+  }
 }

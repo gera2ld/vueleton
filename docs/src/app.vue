@@ -30,9 +30,7 @@ import Doc from './components/doc';
 import items from './items';
 
 export default {
-  components: items.reduce((res, item) => Object.assign(res, {
-    [item.meta.name]: item,
-  }), { Doc }),
+  components: { Doc },
   data() {
     return {
       items,

@@ -2,15 +2,15 @@
 
 ``` html
 <button @click="visible = true">Show modal</button>
-<modal :visible="visible" @close="visible = false">
+<vl-modal :visible="visible" @close="visible = false">
   <div class="content">
     <p>This is modal body.</p>
   </div>
-</modal>
+</vl-modal>
 ```
 
-```js
-import Modal from 'vueleton/lib/modal';
+``` js
+import VlModal from 'vueleton/lib/modal';
 import 'vueleton/lib/modal.css';
 ```
 

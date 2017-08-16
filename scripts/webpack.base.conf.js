@@ -59,4 +59,7 @@ module.exports = {
   plugins: [
     definePlugin,
   ],
+  externals: {
+    codemirror: 'codemirror',
+  },
 };
