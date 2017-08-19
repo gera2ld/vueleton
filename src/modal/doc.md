@@ -12,6 +12,11 @@
 ``` js
 import VlModal from 'vueleton/lib/modal';
 import 'vueleton/lib/modal.css';
+
+// Show a child component in modal:
+VlModal.show(child, {
+  transition: 'fade', // see Vue.js <transition>
+});
 ```
 
 ### API
@@ -23,3 +28,11 @@ Props         | Description                         | Default
 visible       | Whether to show the modal.          | `false`
 backdrop      | Whether to show the backdrop when modal is visible. | `true`
 backdropClose | Whether to emit a `close` event when clicked on backdrop. | `true`
+
+`VlModal.show`:
+- Parameters:
+  - `childComponent`
+  - `props`
+    Will be passed to `VlModal`.
+- Return an object with following properties:
+  - `close`: a function to close the modal immediately.

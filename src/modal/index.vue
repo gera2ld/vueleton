@@ -1,13 +1,16 @@
 <template>
-  <div class="vl-modal" v-if="visible">
-    <div class="vl-modal-backdrop" v-if="backdrop" @click="onBackdropClick"></div>
-    <div class="vl-modal-content"><slot></slot></div>
-  </div>
+  <transition :name="transition" @after-leave="onAfterLeave" appear>
+    <div class="vl-modal" v-if="visible">
+      <div class="vl-modal-backdrop" v-if="backdrop" @click="onBackdropClick"></div>
+      <div class="vl-modal-content"><slot></slot></div>
+    </div>
+  </transition>
 </template>
 
 <script>
 export default {
   props: {
+    transition: String,
     visible: {
       type: Boolean,
       default: false,
@@ -29,6 +32,9 @@ export default {
           source: 'backdrop',
         });
       }
+    },
+    onAfterLeave() {
+      this.$emit('after-leave');
     },
   },
 };

@@ -27,8 +27,3 @@ Usage
    import { Dropdown } from 'vueleton';
    import 'vueleton/lib/index.css';
    ```
-
-Supported components
----
-- Dropdown
-- Modal

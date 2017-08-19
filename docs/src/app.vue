@@ -123,4 +123,9 @@ blockquote {
     margin-bottom: 0;
   }
 }
+
+code {
+  padding: 3px;
+  background: #f0f0f0;
+}
 </style>
