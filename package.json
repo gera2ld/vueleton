@@ -1,6 +1,6 @@
 {
   "name": "vueleton",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Vue components with only core features.",
   "main": "lib/index.esm.js",
   "scripts": {
