@@ -4,7 +4,7 @@
   "description": "Vue components with only core features.",
   "main": "lib/index.esm.js",
   "scripts": {
-    "build": "gulp build",
+    "build": "NODE_ENV=production gulp build",
     "lint": "eslint --ext .js,.vue .",
     "predeploy": "npm run build",
     "deploy": "sh scripts/deploy.sh"
