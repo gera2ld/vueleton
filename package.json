@@ -6,6 +6,7 @@
   "scripts": {
     "build": "gulp build",
     "lint": "eslint --ext .js,.vue .",
+    "predeploy": "npm run build",
     "deploy": "sh scripts/deploy.sh"
   },
   "keywords": [

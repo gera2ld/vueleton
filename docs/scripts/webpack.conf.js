@@ -17,13 +17,24 @@ targets.push(merge(base, {
     app: './src',
   },
   output: {
-    path: path.resolve('dist'),
+    path: resolve('dist'),
     filename: `${basename}.js`,
   },
   resolve: {
     modules: [
-      path.resolve('node_modules'),
-      path.resolve('../node_modules'),
+      resolve('node_modules'),
+      resolve('../node_modules'),
+    ],
+    alias: {
+      vueleton: resolve('..'),
+    },
+  },
+  module: {
+    rules: [
+      {
+        test: /\.esm\.js$/,
+        loader: 'babel-loader',
+      },
     ],
   },
   plugins: [
@@ -45,3 +56,7 @@ targets.push(merge(base, {
     codemirror: false,
   },
 }));
+
+function resolve(...args) {
+  return path.resolve(__dirname, '..', ...args);
+}

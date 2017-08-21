@@ -13,13 +13,12 @@
 </template>
 
 <script>
-import Modal from '.';
+import { Modal } from 'vueleton';
 import doc from './doc.md';
-import Message from './demo-message';
+import Message from './message';
 
 export default {
   meta: {
-    name: 'Modal',
     doc,
   },
   components: {

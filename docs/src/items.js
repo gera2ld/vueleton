@@ -1,10 +1,14 @@
-const requireDemo = require.context('#', true, /\/\w+\/demo\.vue$/);
+const requireDemo = require.context('./demos', true, /\/\w+\/index\.vue$/);
 
-const items = requireDemo.keys().map(key => requireDemo(key).default);
-
-items.forEach(item => {
-  // eslint-disable-next-line prefer-template
-  item.meta.path = '/' + item.meta.name.replace(/[a-z][A-Z]/g, m => `${m[0]}-${m[1]}`).toLowerCase();
+const items = requireDemo.keys()
+.map(key => {
+  const item = requireDemo(key).default;
+  const path = key.slice(1, -10); // ./xxx/index.vue
+  item.meta = Object.assign({}, item.meta, {
+    path,
+    name: path.slice(1).replace(/(?:^|-)(.)/, (m, g) => g.toUpperCase()),
+  });
+  return item;
 });
 
 export default items;

@@ -12,13 +12,12 @@ gulp.task('js', cb => {
   });
 });
 
-gulp.task('esm', () => {
+gulp.task('esm', ['js'], () => {
   const items = [];
-  return gulp.src('src/*/demo.vue', { base: 'src' })
+  return gulp.src('lib/*/index.js', { base: 'src' })
   .pipe(through.obj((file, enc, cb) => {
-    const match = file.contents.toString().match(/meta:\s*{\s*name:\s*'(.*?)'/);
-    const dirname = path.dirname(file.relative);
-    const name = match[1] || dirname.replace(/^./, m => m.toUpperCase());
+    const dirname = path.basename(path.dirname(file.relative));
+    const name = dirname.replace(/(?:^|-)(.)/, (m, g) => g.toUpperCase());
     items.push([dirname, name]);
     const esm = new gutil.File({
       base: '',

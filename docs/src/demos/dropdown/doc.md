@@ -10,8 +10,12 @@
 ```
 
 ``` js
+// ESM way
+import { Dropdown as VlDropdown } from 'vueleton';
+
+// CommonJS way
 import VlDropdown from 'vueleton/lib/dropdown';
-import 'vueleton/lib/dropdown.css';
+import 'vueleton/lib/dropdown/index.css';
 ```
 
 ### API

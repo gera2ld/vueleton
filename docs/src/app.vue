@@ -64,6 +64,15 @@ body,
   height: 100%;
 }
 
+body,
+// Form elements will not inherit
+button,
+select,
+input,
+textarea {
+  font-family: "PingFang SC", STHeiti, "Microsoft YaHei", sans-serif;
+}
+
 .demo {
   display: flex;
   margin: 0 auto;

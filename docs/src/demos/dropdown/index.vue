@@ -29,12 +29,11 @@
 </template>
 
 <script>
-import Dropdown from '.';
+import { Dropdown } from 'vueleton';
 import doc from './doc.md';
 
 export default {
   meta: {
-    name: 'Dropdown',
     doc,
   },
   components: {
