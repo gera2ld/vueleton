@@ -14,16 +14,17 @@ $ npm i vueleton
 
 Usage
 ---
-1. The recommended way: only import the component to be used.
+1. CommonJS way:
 
    ``` js
    import Dropdown from 'vueleton/lib/dropdown';
-   import 'vueleton/lib/dropdown.css';
+   import 'vueleton/lib/dropdown/index.css';
    ```
 
-2. Import everything and pick the one to be used.
+2. ES module way:
+
+   Make sure loaders for `.esm.js` and `.css` files are configured correctly in Webpack.
 
    ``` js
    import { Dropdown } from 'vueleton';
-   import 'vueleton/lib/index.css';
    ```

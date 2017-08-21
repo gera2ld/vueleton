@@ -20,6 +20,12 @@ targets.push(merge(base, {
     path: path.resolve('dist'),
     filename: `${basename}.js`,
   },
+  resolve: {
+    modules: [
+      path.resolve('node_modules'),
+      path.resolve('../node_modules'),
+    ],
+  },
   plugins: [
     new FriendlyErrorsPlugin(),
     new HtmlWebpackPlugin({

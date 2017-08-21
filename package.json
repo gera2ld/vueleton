@@ -2,9 +2,9 @@
   "name": "vueleton",
   "version": "0.2.0",
   "description": "Vue components with only core features.",
-  "main": "lib",
+  "main": "lib/index.esm.js",
   "scripts": {
-    "build": "webpack --config scripts/webpack.conf.js",
+    "build": "gulp build",
     "lint": "eslint --ext .js,.vue .",
     "deploy": "sh scripts/deploy.sh"
   },
@@ -29,6 +29,8 @@
     "eslint-plugin-import": "^2.7.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.8",
     "html-webpack-plugin": "^2.30.1",
     "postcss-loader": "^2.0.6",
     "postcss-scss": "^1.0.2",
@@ -46,7 +48,7 @@
     "url": "https://github.com/gera2ld/vueleton/issues"
   },
   "homepage": "https://github.com/gera2ld/vueleton#readme",
-  "dependencies": {
+  "peerDependencies": {
     "codemirror": "*",
     "vue": "2.x"
   }

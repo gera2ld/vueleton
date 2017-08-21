@@ -17,7 +17,7 @@ module.exports = {
   output: {
     path: resolve(DIST),
     publicPath: '',
-    filename: '[name].js',
+    filename: '[name]/index.js',
   },
   resolve: {
     extensions: ['.js', '.vue'],
@@ -60,6 +60,7 @@ module.exports = {
     definePlugin,
   ],
   externals: {
+    vue: 'vue',
     codemirror: 'codemirror',
   },
 };
