@@ -37,7 +37,7 @@ export default {
       this.visible = false;
     },
     onShowMessage() {
-      Modal.show(this.$createElement(Message), {
+      Modal.show(h => h(Message), {
         transition: 'in-out',
       });
     },

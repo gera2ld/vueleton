@@ -36,7 +36,11 @@ backdropClose | Whether to emit a `close` event when clicked on backdrop. | `tru
 `VlModal.show`:
 - Parameters:
   - `childComponent`
+    Either a VNode object created with `createElement` or
+    a function accepting a parameter `createElement` and returning the created VNode object.
+
   - `props`
     Will be passed to `VlModal`.
+
 - Return an object with following properties:
   - `close`: a function to close the modal immediately.

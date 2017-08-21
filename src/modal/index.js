@@ -13,9 +13,12 @@ VlModal.show = (message, props) => {
   };
   let vm = new Vue({
     data: data.props,
-    render: h => h('div', [
-      h(VlModal, data, [message]),
-    ]),
+    render: h => {
+      const child = typeof message === 'function' ? message(h) : message;
+      return h('div', [
+        h(VlModal, data, [child]),
+      ]);
+    },
   });
   const el = document.createElement('div');
   document.body.appendChild(el);
