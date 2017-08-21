@@ -27,6 +27,10 @@ targets.push(merge(base, {
     ],
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      minChunks: (m, c) => /node_modules/.test(m.context),
+    }),
     new FriendlyErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -37,6 +41,7 @@ targets.push(merge(base, {
   ],
   devtool: IS_DEV ? 'cheap-module-eval-source-map' : false,
   externals: {
+    vue: false,
     codemirror: false,
   },
 }));
