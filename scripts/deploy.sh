@@ -1,7 +1,7 @@
 set -e
-cd docs
-rm -rf dist
 npm run build
+cd docs
+npm run build --production
 cd dist
 git init
 git config user.name Gerald

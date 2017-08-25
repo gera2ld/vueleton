@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>Demo</h3>
+    <h3>Dropdown</h3>
     <dropdown class="demo-dropdown" :closeAfterClick="true">
       <button slot="toggle">Toggle</button>
       <div class="demo-dropdown-item">Menu Item 1</div>
@@ -29,15 +29,16 @@
 </template>
 
 <script>
-import { Dropdown } from 'vueleton';
-import doc from './doc.md';
+import Dropdown from 'vueleton/lib/dropdown';
+import doc from '~/components/dropdown/doc.md';
+import store from '~/assets/store';
 
 export default {
-  meta: {
-    doc,
-  },
   components: {
     Dropdown,
+  },
+  mounted() {
+    store.doc = doc;
   },
 };
 </script>

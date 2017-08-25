@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "description": "Vueleton docs",
   "scripts": {
-    "build": "NODE_ENV=production webpack --config scripts/webpack.conf.js",
-    "dev": "webpack --config scripts/webpack.conf.js -w"
+    "build": "nuxt generate",
+    "dev": "nuxt"
   },
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^3.5.4"
+    "nuxt": "^1.0.0-rc7",
+    "raw-loader": "^0.5.1"
   },
   "dependencies": {
     "codemirror": "^5.28.0",

@@ -1,31 +1,25 @@
 <template>
   <section>
-    <h3>Demo</h3>
+    <h3>Code</h3>
     <div v-text="message"></div>
     <select v-model="mode">
       <option v-for="mode in modes" v-text="mode"></option>
     </select>
-    <vl-code v-model="code" :options="options" @ready="onReady" />
+    <vl-code v-if="mounted" v-model="code" :options="options" @ready="onReady" />
   </section>
 </template>
 
 <script>
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/mode/javascript/javascript';
-import 'codemirror/mode/css/css';
-import 'codemirror/mode/markdown/markdown';
-import { Code as VlCode } from 'vueleton';
-import doc from './doc.md';
+import doc from '~/components/code/doc.md';
+import store from '~/assets/store';
 
 export default {
-  meta: {
-    doc,
-  },
   components: {
-    VlCode,
+    VlCode: () => import('~/components/code/vl-code'),
   },
   data() {
     return {
+      mounted: false,
       message: '',
       code: `\
 console.log("hello, world");
@@ -56,6 +50,10 @@ Test \`markdown\`.`,
         });
       },
     },
+  },
+  mounted() {
+    this.mounted = true;
+    store.doc = doc;
   },
   methods: {
     onReady(/* cm */) {

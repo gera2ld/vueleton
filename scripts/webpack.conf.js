@@ -16,6 +16,6 @@ targets.push(merge(base, {
     libraryTarget: 'commonjs2',
   },
   plugins: [
-    new ExtractTextPlugin('[name]/index.css'),
+    new ExtractTextPlugin('[name]/style.css'),
   ],
 }));

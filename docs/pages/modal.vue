@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>Demo</h3>
+    <h3>Modal</h3>
     <button @click="onShow">Show modal</button>
     <button @click="onShowMessage">Show message</button>
     <modal :visible="visible" @close="onClose">
@@ -13,14 +13,12 @@
 </template>
 
 <script>
-import { Modal } from 'vueleton';
-import doc from './doc.md';
-import Message from './message';
+import Modal from 'vueleton/lib/modal';
+import doc from '~/components/modal/doc.md';
+import Message from '~/components/modal/message';
+import store from '~/assets/store';
 
 export default {
-  meta: {
-    doc,
-  },
   components: {
     Modal,
   },
@@ -28,6 +26,9 @@ export default {
     return {
       visible: false,
     };
+  },
+  mounted() {
+    store.doc = doc;
   },
   methods: {
     onShow() {

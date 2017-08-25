@@ -17,7 +17,7 @@ module.exports = {
   output: {
     path: resolve(DIST),
     publicPath: '',
-    filename: '[name]/index.js',
+    filename: '[name]/component.js',
   },
   resolve: {
     extensions: ['.js', '.vue'],

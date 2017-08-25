@@ -2,7 +2,6 @@
   "name": "vueleton",
   "version": "0.3.2",
   "description": "Vue components with only core features.",
-  "main": "lib/index.esm.js",
   "scripts": {
     "build": "NODE_ENV=production gulp build",
     "lint": "eslint --ext .js,.vue .",

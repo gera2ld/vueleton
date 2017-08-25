@@ -1,0 +1,87 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.demo {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+body,
+// Form elements will not inherit
+button,
+select,
+input,
+textarea {
+  font-family: "PingFang SC", STHeiti, "Microsoft YaHei", sans-serif;
+}
+
+.demo {
+  display: flex;
+  margin: 0 auto;
+  > * {
+    padding: 20px;
+  }
+  > div {
+    flex: 1;
+    overflow-y: auto;
+  }
+  > nav {
+    flex: 0 0 200px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #bbb;
+    > section {
+      flex: auto;
+      overflow-y: auto;
+      > a {
+      }
+    }
+    h1 {
+      color: dodgerblue;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+  &-nav-items > a {
+    display: block;
+    padding: 5px;
+    color: #333;
+    cursor: pointer;
+    &:hover,
+    &.active {
+      color: dodgerblue;
+    }
+  }
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 3px 5px;
+  border: 1px solid #bbb;
+}
+
+blockquote {
+  margin: 16px 0;
+  padding: 16px;
+  background: #f0f0f0;
+  > p:first-child {
+    margin-top: 0;
+  }
+  > p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+code {
+  padding: 3px;
+  background: #f0f0f0;
+}

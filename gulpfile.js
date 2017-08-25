@@ -12,35 +12,24 @@ gulp.task('js', cb => {
   });
 });
 
-gulp.task('esm', ['js'], () => {
-  const items = [];
-  return gulp.src('lib/*/index.js', { base: 'src' })
+gulp.task('entry', ['js'], () => {
+  return gulp.src('lib/*/component.js', { base: 'src' })
   .pipe(through.obj((file, enc, cb) => {
-    const dirname = path.basename(path.dirname(file.relative));
-    const name = dirname.replace(/(?:^|-)(.)/, (m, g) => g.toUpperCase());
-    items.push([dirname, name]);
+    const dirname = path.dirname(file.relative);
     const esm = new gutil.File({
       base: '',
-      path: path.join(path.dirname(file.relative), 'index.esm.js'),
+      path: `${dirname}/index.js`,
       contents: new Buffer(`\
-import './index.css';
-export default from './index.js';
+require('./style.css');
+module.exports = require('./component');
 `),
     });
     cb(null, esm);
-  }, function (cb) {
-    const esm = new gutil.File({
-      base: '',
-      path: 'index.esm.js',
-      contents: new Buffer(items.map(([dirname, name]) => `export ${name} from './${dirname}/index.esm.js';`).join('\n')),
-    });
-    this.push(esm);
-    cb();
   }))
   .pipe(gulp.dest('lib'));
 });
 
-gulp.task('build', ['js', 'esm']);
+gulp.task('build', ['entry']);
 
 function webpackCallback(err, stats) {
   if (err) {

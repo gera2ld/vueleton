@@ -5,11 +5,12 @@
 </template>
 
 <script>
-import doc from './doc.md';
+import doc from '~/components/home/doc.md';
+import store from '~/assets/store';
 
 export default {
-  meta: {
-    doc,
+  mounted() {
+    store.doc = doc;
   },
 };
 </script>

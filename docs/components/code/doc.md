@@ -5,12 +5,7 @@
 ```
 
 ``` js
-// ESM way
-import { Code as VlCode } from 'vueleton';
-
-// CommonJS way
-import VlCode from 'vueleton/lib/code';
-import 'vueleton/lib/code/index.css';
+import 'vueleton/lib/code';
 ```
 
 ### API

@@ -59,6 +59,7 @@ export default {
   }
   &-content {
     display: inline-block;
+    height: 0;
   }
 }
 </style>
