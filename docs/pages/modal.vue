@@ -57,15 +57,15 @@ export default {
   &-appear,
   &-enter,
   &-leave-active {
-    .vl-modal-content {
-      transform: translateY(-150%);
+    .vl-modal-content > * {
+      transform: translateY(-120%);
     }
   }
   &-appear-active,
   &-enter-active,
   &-leave-active {
     &,
-    .vl-modal-content {
+    .vl-modal-content > * {
       transition: transform .5s;
     }
   }
