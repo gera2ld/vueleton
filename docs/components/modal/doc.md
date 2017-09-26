@@ -10,12 +10,7 @@
 ```
 
 ``` js
-// ESM way
-import { Modal as VlModal } from 'vueleton';
-
-// CommonJS way
 import VlModal from 'vueleton/lib/modal';
-import 'vueleton/lib/modal/index.css';
 
 // Show a child component in modal:
 VlModal.show(child, {
