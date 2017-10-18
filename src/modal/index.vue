@@ -2,7 +2,7 @@
   <transition :name="transition" @after-leave="onAfterLeave" appear>
     <div class="vl-modal" v-if="visible">
       <div class="vl-modal-backdrop" v-if="backdrop" @click="onBackdropClick"></div>
-      <div class="vl-modal-content"><slot></slot></div>
+      <slot></slot>
     </div>
   </transition>
 </template>
@@ -16,18 +16,13 @@ export default {
       default: false,
     },
     backdrop: {
-      type: Boolean,
-      default: true,
-    },
-    backdropClose: {
-      type: Boolean,
-      default: true,
+      type: [Object, Boolean],
+      default: () => ({ close: true }),
     },
   },
   methods: {
-    onBackdropClick(e) {
-      if (this.backdropClose) {
-        e.stopPropagation();
+    onBackdropClick() {
+      if (this.backdrop === true || this.backdrop.close) {
         this.$emit('close', {
           source: 'backdrop',
         });
@@ -56,10 +51,6 @@ export default {
     bottom: 0;
     background: rgba(0,0,0,.4);
     z-index: -1;
-  }
-  &-content {
-    display: inline-block;
-    height: 0;
   }
 }
 </style>

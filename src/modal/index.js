@@ -15,6 +15,8 @@ VlModal.show = (message, props) => {
     data: data.props,
     render: h => {
       const child = typeof message === 'function' ? message(h) : message;
+      // Must be wrapped for vm.$el to find the element,
+      // perhaps due to bug of <transition>
       return h('div', [
         h(VlModal, data, [child]),
       ]);
