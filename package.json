@@ -1,6 +1,6 @@
 {
   "name": "vueleton",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Vue components with only core features.",
   "scripts": {
     "build": "NODE_ENV=production node scripts/build",
