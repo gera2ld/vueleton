@@ -29,7 +29,7 @@ export default {
     },
   },
   mounted() {
-    const CodeMirror = require('codemirror');
+    const CodeMirror = require('codemirror'); // eslint-disable-line global-require, import/no-unresolved
     this.cm = CodeMirror(this.$el, Object.assign({}, defaultOptions, this.options));
     this.$emit('ready', this.cm);
     this.cm.on('change', cm => {

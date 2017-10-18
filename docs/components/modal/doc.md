@@ -25,10 +25,9 @@ Show a modal with optional backdrop.
 Props         | Description                         | Default
 --------------|-------------------------------------|---------
 visible       | Whether to show the modal.          | `false`
-backdrop      | Whether to show the backdrop when modal is visible. | `true`
-backdropClose | Whether to emit a `close` event when clicked on backdrop. | `true`
+backdrop      | Backdrop options, if `backdrop === false`, there will be no backdrop. `backdrop === true` is the same as `backdrop === { close: true }`. If `backdrop.close` is true, a `close` event will be emitted when clicked on backdrop.  | `{ close: true }`
 
-`VlModal.show`:
+`VlModal.show(childComponent, props)`:
 - Parameters:
   - `childComponent`
     Either a VNode object created with `createElement` or

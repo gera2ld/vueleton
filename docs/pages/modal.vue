@@ -3,7 +3,7 @@
     <h3>Modal</h3>
     <button @click="onShow">Show modal</button>
     <button @click="onShowMessage">Show message</button>
-    <modal :visible="visible" @close="onClose">
+    <modal transition="fade" :visible="visible" @close="onClose">
       <div class="demo-modal-body">
         <h1>Hello, world!</h1>
         <button @click="onClose">Close</button>
@@ -49,15 +49,16 @@ export default {
 <style>
 .demo-modal-body {
   width: 200px;
-  margin-top: 100px;
+  margin: 100px auto 0;
   padding: 30px;
   background: white;
 }
+
 .in-out {
   &-appear,
   &-enter,
   &-leave-active {
-    .vl-modal-content > * {
+    > .demo-modal-message {
       transform: translateY(-120%);
     }
   }
@@ -65,8 +66,26 @@ export default {
   &-enter-active,
   &-leave-active {
     &,
-    .vl-modal-content > * {
+    > * {
       transition: transform .5s;
+    }
+  }
+}
+
+.fade {
+  &-appear,
+  &-enter,
+  &-leave-active {
+    > * {
+      opacity: 0;
+    }
+  }
+  &-appear-active,
+  &-enter-active,
+  &-leave-active {
+    &,
+    > * {
+      transition: opacity .5s;
     }
   }
 }

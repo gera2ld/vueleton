@@ -14,14 +14,6 @@ module.exports = {
   plugins: [
     'html'
   ],
-  // check if imports actually resolve
-  'settings': {
-    'import/resolver': {
-      'webpack': {
-        'config': 'scripts/webpack.conf.js'
-      }
-    }
-  },
   // add your custom rules here
   'rules': {
     // don't require .vue extension when importing
@@ -46,9 +38,5 @@ module.exports = {
     'no-underscore-dangle': ['off'],
     'arrow-parens': 0,
     'indent': ['error', 2, { MemberExpression: 0 }],
-  },
-  globals: {
-    browser: true,
-    zip: true,
   },
 }

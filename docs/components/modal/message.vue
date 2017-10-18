@@ -4,7 +4,9 @@
 
 <style>
 .demo-modal-message {
-  padding: 8px;
+  width: 200px;
+  margin: 0 auto;
+  padding: 20px;
   background: white;
 }
 </style>
