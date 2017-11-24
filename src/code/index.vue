@@ -25,7 +25,7 @@ export default {
   methods: {
     update(value) {
       if (value === this.cached) return;
-      if (this.cm) this.cm.setValue(this.cached = value);
+      if (this.cm) this.cm.setValue(this.cached = value == null ? '' : `${value}`);
     },
   },
   mounted() {
