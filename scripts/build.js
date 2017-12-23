@@ -4,13 +4,13 @@ const rollup = require('rollup');
 const babel = require('rollup-plugin-babel');
 const vue = require('rollup-plugin-vue');
 
-const writeFileAsync = util.promisify(fs.writeFile);
 const statAsync = util.promisify(fs.stat);
 
 [
   'Code',
   'Dropdown',
   'Modal',
+  'Tooltip',
 ].forEach(buildComponent);
 
 async function buildComponent(name) {
@@ -29,7 +29,7 @@ async function buildComponent(name) {
   if (!input) throw new Error(`Cannot find component: ${name}`);
   const rollupOptions = {
     input,
-    file: `lib/${lname}/component.js`,
+    file: `lib/${lname}/index.js`,
     format: 'cjs',
     plugins: [
       vue({
@@ -54,8 +54,4 @@ async function buildComponent(name) {
   };
   const bundle = await rollup.rollup(rollupOptions);
   await bundle.write(rollupOptions);
-  await writeFileAsync(`lib/${lname}/index.js`, `\
-module.exports = require('./component');
-require('./style.css');
-`);
 }
