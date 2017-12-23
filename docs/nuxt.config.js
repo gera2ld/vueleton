@@ -29,14 +29,6 @@ module.exports = {
         require('precss'),
       ],
     },
-    babel: {
-      plugins: [
-        ['import', {
-          libraryName: 'vueleton',
-          style: true,
-        }],
-      ],
-    },
   },
 };
 

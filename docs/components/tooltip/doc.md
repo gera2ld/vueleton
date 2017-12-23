@@ -7,7 +7,7 @@
 ```
 
 ``` js
-import { Tooltip as VlTooltip } from 'vueleton';
+import VlTooltip from 'vueleton/lib/tooltip';
 ```
 
 ### API

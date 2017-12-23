@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { Tooltip } from 'vueleton';
+import Tooltip from 'vueleton/lib/tooltip';
 import doc from '~/components/tooltip/doc.md';
 import store from '~/assets/store';
 

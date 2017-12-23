@@ -10,7 +10,7 @@
 ```
 
 ``` js
-import { Dropdown as VlDropdown } from 'vueleton';
+import VlDropdown from 'vueleton/lib/dropdown';
 ```
 
 ### API

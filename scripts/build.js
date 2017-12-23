@@ -30,7 +30,7 @@ async function buildComponent(name) {
   if (!input) throw new Error(`Cannot find component: ${name}`);
   const rollupOptions = {
     input,
-    file: `lib/${lname}/index.js`,
+    file: `lib/${lname}/component.js`,
     format: 'cjs',
     plugins: [
       vue({
@@ -55,5 +55,5 @@ async function buildComponent(name) {
   };
   const bundle = await rollup.rollup(rollupOptions);
   await bundle.write(rollupOptions);
-  await writeFileAsync(`lib/${lname}/style.js`, `require('./style.css');`);
+  await writeFileAsync(`lib/${lname}/index.js`, `require('./style.css');\nmodule.exports = require('./component.js');`);
 }

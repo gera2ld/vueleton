@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { Modal } from 'vueleton';
+import Modal from 'vueleton/lib/modal';
 import doc from '~/components/modal/doc.md';
 import Message from '~/components/modal/message';
 import store from '~/assets/store';

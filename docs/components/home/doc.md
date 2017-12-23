@@ -16,29 +16,7 @@ $ yarn add vueleton
 
 Usage
 ---
-There are two ways to import components from Vueleton:
 
-- Import component and style respectively:
-
-  ``` js
-  import VlDropdown from 'vueleton/lib/dropdown';
-  import 'vueleton/lib/dropdown/style.css';
-  ```
-
-- Use [bable-plugin-import](https://github.com/ant-design/babel-plugin-import) to make it easy:
-
-  ``` js
-  import { Dropdown as VlDropdown, Code as VlCode } from 'vueleton';
-  ```
-
-  Add plugin to your `.babelrc`:
-
-  ``` js
-  {
-    // ...
-    "plugins": ["import", {
-      "libraryName": "vueleton",
-      "style": true
-    }],
-  }
-  ```
+``` js
+import VlDropdown from 'vueleton/lib/dropdown';
+```
