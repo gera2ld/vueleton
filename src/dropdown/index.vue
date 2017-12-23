@@ -51,6 +51,7 @@ export default {
       } else {
         document.removeEventListener('mousedown', this.onClose, false);
       }
+      this.$emit('stateChange', active);
     },
   },
   methods: {
