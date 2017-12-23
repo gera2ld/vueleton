@@ -6,6 +6,7 @@
         <nuxt-link to="/code/">Code</nuxt-link>
         <nuxt-link to="/dropdown/">Dropdown</nuxt-link>
         <nuxt-link to="/modal/">Modal</nuxt-link>
+        <nuxt-link to="/tooltip/">Tooltip</nuxt-link>
       </section>
       <footer>
         <p>Designed with &hearts; by <a href="https://gerald.top">Gerald</a></p>

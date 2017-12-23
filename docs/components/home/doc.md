@@ -10,18 +10,35 @@ Installation
 ---
 ``` sh
 $ npm i vueleton
+# or
+$ yarn add vueleton
 ```
 
 Usage
 ---
-1. Make sure your Webpack has been configured properly to import `.css` files.
+There are two ways to import components from Vueleton:
 
-1. Import the components as needed:
+- Import component and style respectively:
 
-   ``` js
-   import Dropdown from 'vueleton/lib/dropdown';
+  ``` js
+  import VlDropdown from 'vueleton/lib/dropdown';
+  import 'vueleton/lib/dropdown/style.css';
+  ```
 
-   // This is equal to:
-   import Dropdown from 'vueleton/lib/dropdown/component';
-   import 'vueleton/lib/dropdown/style.css';
-   ```
+- Use [bable-plugin-import](https://github.com/ant-design/babel-plugin-import) to make it easy:
+
+  ``` js
+  import { Dropdown as VlDropdown, Code as VlCode } from 'vueleton';
+  ```
+
+  Add plugin to your `.babelrc`:
+
+  ``` js
+  {
+    // ...
+    "plugins": ["import", {
+      "libraryName": "vueleton",
+      "style": true
+    }],
+  }
+  ```

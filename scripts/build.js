@@ -5,6 +5,7 @@ const babel = require('rollup-plugin-babel');
 const vue = require('rollup-plugin-vue');
 
 const statAsync = util.promisify(fs.stat);
+const writeFileAsync = util.promisify(fs.writeFile);
 
 [
   'Code',
@@ -54,4 +55,5 @@ async function buildComponent(name) {
   };
   const bundle = await rollup.rollup(rollupOptions);
   await bundle.write(rollupOptions);
+  await writeFileAsync(`lib/${lname}/style.js`, `require('./style.css');`);
 }

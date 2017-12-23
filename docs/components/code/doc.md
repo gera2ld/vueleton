@@ -5,7 +5,7 @@
 ```
 
 ``` js
-import VlCode from 'vueleton/lib/code';
+import { Code as VlCode } from 'vueleton';
 ```
 
 ### API
