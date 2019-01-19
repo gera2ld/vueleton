@@ -8,14 +8,15 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "nuxt": "^1.0.0-rc7",
-    "raw-loader": "^0.5.1"
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "nuxt": "^2.3.4",
+    "raw-loader": "^1.0.0"
   },
   "dependencies": {
-    "codemirror": "^5.28.0",
-    "highlight.js": "^9.12.0",
-    "marked": "^0.3.6",
-    "vue": "^2.4.2",
-    "vue-router": "^2.7.0"
+    "codemirror": "^5.42.2",
+    "highlight.js": "^9.13.1",
+    "marked": "^0.6.0",
+    "vue": "^2.5.22",
+    "vue-router": "^3.0.2"
   }
 }

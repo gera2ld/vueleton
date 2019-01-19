@@ -1,5 +1,8 @@
 <template>
-  <div class="vl-dropdown" :class="`vl-dropdown-${align} vl-dropdown-${direction}`" @mouseup="onMouseUp">
+  <div
+    class="vl-dropdown"
+    :class="`vl-dropdown-${align} vl-dropdown-${direction}`"
+    @mouseup="onMouseUp">
     <div class="vl-dropdown-toggle" @click="onToggle" @focus="onFocus" @blur="onBlur">
       <slot name="toggle"></slot>
     </div>

@@ -10,7 +10,7 @@
 ```
 
 ``` js
-import VlModal from 'vueleton/lib/modal';
+import VlModal from 'vueleton/lib/modal/bundle';
 
 // Show a child component in modal:
 VlModal.show(child, {

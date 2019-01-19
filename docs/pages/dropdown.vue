@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Dropdown from 'vueleton/lib/dropdown';
+import Dropdown from 'vueleton/es/dropdown/bundle';
 import doc from '~/components/dropdown/doc.md';
 import store from '~/assets/store';
 

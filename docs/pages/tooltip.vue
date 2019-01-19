@@ -3,28 +3,28 @@
     <h3>Tooltip</h3>
     Alignment:
     <div class="demo-tooltip-group">
-      <tooltip placement="up" align="end" title="hello, world">
+      <tooltip placement="top" align="end" content="hello, world">
         <button>End</button>
       </tooltip>
-      <tooltip placement="up" title="hello, world">
+      <tooltip placement="top" content="hello, world">
         <button>Center</button>
       </tooltip>
-      <tooltip placement="up" align="start" title="hello, world">
+      <tooltip placement="top" align="start" content="hello, world">
         <button>Start</button>
       </tooltip>
     </div>
     Placement:
     <div class="demo-tooltip-group">
-      <tooltip placement="left" title="hello, world">
+      <tooltip placement="left" content="hello, world">
         <button>Left</button>
       </tooltip>
-      <tooltip placement="up" title="hello, world">
+      <tooltip placement="top" content="hello, world">
         <button>Up</button>
       </tooltip>
-      <tooltip placement="down" title="hello, world">
+      <tooltip placement="bottom" content="hello, world">
         <button>Down</button>
       </tooltip>
-      <tooltip placement="right" title="hello, world">
+      <tooltip placement="right" content="hello, world">
         <button>Right</button>
       </tooltip>
     </div>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import Tooltip from 'vueleton/lib/tooltip';
+import Tooltip from 'vueleton/es/tooltip/bundle';
 import doc from '~/components/tooltip/doc.md';
 import store from '~/assets/store';
 

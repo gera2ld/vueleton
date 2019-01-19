@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VlModal from './index.vue';
+import VlModal from './modal.vue';
 
 export default VlModal;
 
@@ -21,10 +21,9 @@ VlModal.show = (message, props) => {
         h(VlModal, data, [child]),
       ]);
     },
-  });
-  const el = document.createElement('div');
-  document.body.appendChild(el);
-  vm.$mount(el);
+  })
+  .$mount();
+  document.body.appendChild(vm.$el);
   return { close };
 
   function close() {

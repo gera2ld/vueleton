@@ -2,6 +2,7 @@ const path = require('path');
 const IS_PRD = process.env.NODE_ENV === 'production';
 
 module.exports = {
+  mode: 'spa',
   head: {
     title: 'Vueleton',
     meta: [
@@ -20,13 +21,18 @@ module.exports = {
         test: /\.md$/,
         loader: 'raw-loader',
       });
-      const jsRule = config.module.rules.find(rule => rule.test.toString().includes('\\.js$'));
-      jsRule.include = __dirname;
+    },
+    babel: {
+      plugins: [
+        '@babel/plugin-proposal-export-default-from',
+      ],
     },
     postcss: {
       parser: require('postcss-scss'),
       plugins: [
         require('precss'),
+        require('postcss-color-function'),
+        require('postcss-calc'),
       ],
     },
   },

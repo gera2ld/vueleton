@@ -1,5 +1,4 @@
-Vueleton
-===
+# Vueleton
 
 ![NPM](https://img.shields.io/npm/v/vueleton.svg)
 ![License](https://img.shields.io/npm/l/vueleton.svg)

@@ -15,7 +15,8 @@ export default {
     options(options, oldOptions) {
       const { cm } = this;
       if (!cm) return;
-      Object.keys(Object.assign({}, oldOptions, options)).forEach(key => {
+      Object.keys({ ...oldOptions, ...options })
+      .forEach(key => {
         if (options[key] !== oldOptions[key]) {
           cm.setOption(key, options[key]);
         }

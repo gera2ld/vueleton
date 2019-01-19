@@ -7,7 +7,6 @@
     "lint": "eslint --ext .js,.vue .",
     "deploy": "sh scripts/deploy.sh"
   },
-  "module": "lib/index.mjs",
   "keywords": [
     "vue",
     "skeleton"
@@ -15,21 +14,26 @@
   "author": "Gerald <i@gerald.top>",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.1",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-eslint": "^10.0.1",
     "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^4.9.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-html": "^3.2.2",
-    "eslint-plugin-import": "^2.7.0",
-    "postcss-scss": "^1.0.2",
-    "precss": "^2.0.0",
-    "rollup": "^0.50.0",
-    "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-vue": "^2.5.2",
-    "vue": "^2.5.2",
-    "vue-template-compiler": "^2.5.2"
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-html": "^5.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-vue": "^5.1.0",
+    "postcss": "^7.0.13",
+    "postcss-calc": "^7.0.1",
+    "postcss-color-function": "^4.0.1",
+    "postcss-scss": "^2.0.0",
+    "precss": "^4.0.0",
+    "rollup": "^1.1.0",
+    "rollup-plugin-babel": "^4.3.1",
+    "rollup-plugin-postcss": "^1.6.3",
+    "rollup-plugin-vue": "^4.6.1",
+    "vue": "^2.5.22",
+    "vue-template-compiler": "^2.5.22"
   },
   "repository": {
     "type": "git",

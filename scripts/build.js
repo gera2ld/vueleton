@@ -1,26 +1,23 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const util = require('util');
 const rollup = require('rollup');
 const babel = require('rollup-plugin-babel');
 const vue = require('rollup-plugin-vue');
+const postcss = require('rollup-plugin-postcss');
 
-const statAsync = util.promisify(fs.stat);
-const writeFileAsync = util.promisify(fs.writeFile);
+build();
 
-[
-  'Code',
-  'Dropdown',
-  'Modal',
-  'Tooltip',
-].forEach(buildComponent);
+async function build() {
+  const items = await fs.readdir('src');
+  return Promise.all(items.map(buildComponent));
+}
 
 async function buildComponent(name) {
-  const lname = name.replace(/(.)([A-Z])/g, (m, g1, g2) => `${g1}-${g2}`).toLowerCase();
   let input;
   for (let ext of ['js', 'vue']) {
-    const tryInput = `src/${lname}/index.${ext}`;
+    const tryInput = `src/${name}/index.${ext}`;
     try {
-      await statAsync(tryInput);
+      await fs.stat(tryInput);
     } catch (err) {
       continue;
     }
@@ -28,32 +25,68 @@ async function buildComponent(name) {
     break;
   }
   if (!input) throw new Error(`Cannot find component: ${name}`);
-  const rollupOptions = {
-    input,
-    file: `lib/${lname}/component.js`,
-    format: 'cjs',
-    plugins: [
-      vue({
-        css: `lib/${lname}/style.css`,
-      }),
-      babel({
-        presets: [
-          ['env', {
-            modules: false,
-          }],
-        ],
+  const getOptions = format => {
+    const dir = {
+      cjs: 'lib',
+      esm: 'es',
+    }[format];
+    const rollupOptions = {
+      input: {
+        input,
         plugins: [
-          'external-helpers',
+          vue({
+            css: false,
+            style: {
+              postcssCleanOptions: { disabled: true },
+              postcssOptions: {
+                parser: require('postcss-scss'),
+              },
+              postcssPlugins: [
+                require('precss'),
+                require('postcss-color-function'),
+                require('postcss-calc'),
+              ],
+            },
+          }),
+          postcss({
+            extract: `${dir}/${name}/style.css`,
+          }),
+          babel({
+            exclude: 'node_modules/**',
+          }),
         ],
-        ignore: 'node_modules/**',
-      }),
-    ],
-    external: [
-      'codemirror',
-      'vue',
-    ],
+        external: [
+          'codemirror',
+          'vue',
+        ],
+      },
+      output: {
+        file: `${dir}/${name}/index.js`,
+        format,
+      },
+    };
+    return rollupOptions;
   };
-  const bundle = await rollup.rollup(rollupOptions);
-  await bundle.write(rollupOptions);
-  await writeFileAsync(`lib/${lname}/index.js`, `require('./style.css');\nmodule.exports = require('./component.js');`);
+  {
+    const rollupOptions = getOptions('cjs');
+    const bundle = await rollup.rollup(rollupOptions.input);
+    await bundle.write(rollupOptions.output);
+    await fs.writeFile(`lib/${name}/style.js`, `require('./style.css');`, 'utf8');
+    await fs.writeFile(`lib/${name}/bundle.js`, `\
+module.exports = require('./index');
+require('./style');
+`, 'utf8');
+  }
+  {
+    const rollupOptions = getOptions('esm');
+    const bundle = await rollup.rollup(rollupOptions.input);
+    await bundle.write(rollupOptions.output);
+    await fs.writeFile(`es/${name}/style.js`, `import './style.css';`, 'utf8');
+    await fs.writeFile(`es/${name}/bundle.js`, `\
+import ${name} from './index';
+import './style';
+
+export default ${name};
+`, 'utf8');
+  }
 }
