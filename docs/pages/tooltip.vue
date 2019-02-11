@@ -48,7 +48,18 @@ export default {
 
 <style>
 .demo-tooltip-group {
+  box-sizing: border-box;
+  height: 80px;
+  padding: 30px 0;
   border: 1px solid #ddd;
   text-align: center;
+  overflow: auto;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 80px;
+    vertical-align: top;
+  }
 }
 </style>
