@@ -46,5 +46,9 @@
   "peerDependencies": {
     "codemirror": "*",
     "vue": "2.x"
-  }
+  },
+  "files": [
+    "es",
+    "lib"
+  ]
 }
