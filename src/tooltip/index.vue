@@ -1,5 +1,5 @@
 <template>
-  <span @mouseenter="onEnter" @mouseleave="onLeave" @click.capture="onClick">
+  <span @mouseenter="onEnter" @mouseleave="onLeave">
     <slot></slot>
   </span>
 </template>
@@ -9,17 +9,20 @@ import Vue from 'vue';
 import Tooltip from './tooltip.vue';
 
 const tooltips = [];
-document.addEventListener('scroll', debounce(updateTooltips, 100), true);
+const throttledUpdate = throttleWithRAF(updateTooltips);
+document.addEventListener('scroll', throttledUpdate, true);
+window.addEventListener('resize', throttledUpdate, false);
 
-function debounce(func, time) {
-  let timer;
+function throttleWithRAF(func) {
+  let running = false;
   function exec() {
-    timer = null;
     func();
+    running = false;
   }
   return () => {
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(exec, time);
+    if (running) return;
+    requestAnimationFrame(exec);
+    running = true;
   };
 }
 
