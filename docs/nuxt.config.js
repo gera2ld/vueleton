@@ -23,6 +23,10 @@ module.exports = {
       });
     },
     babel: {
+      exclude: [
+        path.resolve(__dirname, '../lib'),
+        /node_modules/,
+      ],
       plugins: [
         '@babel/plugin-proposal-export-default-from',
       ],

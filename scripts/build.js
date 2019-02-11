@@ -4,12 +4,13 @@ const rollup = require('rollup');
 const babel = require('rollup-plugin-babel');
 const vue = require('rollup-plugin-vue');
 const postcss = require('rollup-plugin-postcss');
+const commonjs = require('rollup-plugin-commonjs');
 
 build();
 
 async function build() {
   const items = await fs.readdir('src');
-  await Promise.all(items.map(buildComponent));
+  await Promise.all(items.filter(name => !name.startsWith('.')).map(buildComponent));
 }
 
 function camelize(name) {
@@ -46,6 +47,7 @@ async function buildComponent(name) {
       input: {
         input,
         plugins: [
+          commonjs(),
           vue({
             css: false,
             style: {
