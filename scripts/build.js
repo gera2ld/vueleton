@@ -53,12 +53,13 @@ async function buildComponent(name) {
           }),
           babel({
             exclude: 'node_modules/**',
+            runtimeHelpers: true,
           }),
         ],
-        external: [
+        external: id => id.startsWith('@babel/runtime/') || [
           'codemirror',
           'vue',
-        ],
+        ].includes(id),
       },
       output: {
         file: `${dir}/${name}/index.js`,

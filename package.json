@@ -2,6 +2,13 @@
   "name": "vueleton",
   "version": "0.6.1",
   "description": "Vue components with only core features.",
+  "author": "Gerald <i@gerald.top>",
+  "license": "ISC",
+  "homepage": "https://github.com/gera2ld/vueleton#readme",
+  "files": [
+    "es",
+    "lib"
+  ],
   "scripts": {
     "build": "NODE_ENV=production node scripts/build",
     "lint": "eslint --ext .js,.vue .",
@@ -11,13 +18,15 @@
     "vue",
     "skeleton"
   ],
-  "author": "Gerald <i@gerald.top>",
-  "license": "ISC",
+  "peerDependencies": {
+    "codemirror": "*",
+    "vue": "2.x"
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "babel-eslint": "^10.0.1",
-    "babel-plugin-external-helpers": "^6.22.0",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-html": "^5.0.0",
@@ -35,20 +44,14 @@
     "vue": "^2.5.22",
     "vue-template-compiler": "^2.5.22"
   },
+  "dependencies": {
+    "@babel/runtime": "^7.3.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gera2ld/vueleton.git"
   },
   "bugs": {
     "url": "https://github.com/gera2ld/vueleton/issues"
-  },
-  "homepage": "https://github.com/gera2ld/vueleton#readme",
-  "peerDependencies": {
-    "codemirror": "*",
-    "vue": "2.x"
-  },
-  "files": [
-    "es",
-    "lib"
-  ]
+  }
 }
