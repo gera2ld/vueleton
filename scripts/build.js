@@ -9,7 +9,20 @@ build();
 
 async function build() {
   const items = await fs.readdir('src');
-  return Promise.all(items.map(buildComponent));
+  await Promise.all(items.map(buildComponent));
+}
+
+function camelize(name) {
+  return name.replace(/(?:^|-)(\w)/, (m, g) => g.toUpperCase());
+}
+
+async function fileExists(file) {
+  try {
+    const stat = await fs.stat(file);
+    return stat.isFile();
+  } catch (err) {
+    return false;
+  }
 }
 
 async function buildComponent(name) {
@@ -72,7 +85,8 @@ async function buildComponent(name) {
     const rollupOptions = getOptions('cjs');
     const bundle = await rollup.rollup(rollupOptions.input);
     await bundle.write(rollupOptions.output);
-    await fs.writeFile(`lib/${name}/style.js`, `require('./style.css');`, 'utf8');
+    const styleJs = await fileExists(`lib/${name}/style.css`) ? `require('./style.css');` : '';
+    await fs.writeFile(`lib/${name}/style.js`, styleJs, 'utf8');
     await fs.writeFile(`lib/${name}/bundle.js`, `\
 module.exports = require('./index');
 require('./style');
@@ -82,12 +96,14 @@ require('./style');
     const rollupOptions = getOptions('esm');
     const bundle = await rollup.rollup(rollupOptions.input);
     await bundle.write(rollupOptions.output);
-    await fs.writeFile(`es/${name}/style.js`, `import './style.css';`, 'utf8');
+    const styleJs = await fileExists(`es/${name}/style.css`) ? `import './style.css';` : '';
+    await fs.writeFile(`es/${name}/style.js`, styleJs, 'utf8');
+    const camelizedName = camelize(name);
     await fs.writeFile(`es/${name}/bundle.js`, `\
-import ${name} from './index';
+import ${camelizedName} from './index';
 import './style';
 
-export default ${name};
+export default ${camelizedName};
 `, 'utf8');
   }
 }

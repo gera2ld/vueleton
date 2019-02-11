@@ -9,7 +9,7 @@ It contains useful components with simple style which are easy to be extended.
 Installation
 ---
 ``` sh
-$ npm i vueleton
+$ npm i vueleton -S
 # or
 $ yarn add vueleton
 ```
@@ -18,5 +18,5 @@ Usage
 ---
 
 ``` js
-import VlDropdown from 'vueleton/lib/dropdown';
+import VlDropdown from 'vueleton/lib/dropdown/bundle';
 ```
