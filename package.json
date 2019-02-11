@@ -6,7 +6,6 @@
   "license": "ISC",
   "homepage": "https://github.com/gera2ld/vueleton#readme",
   "files": [
-    "es",
     "lib"
   ],
   "scripts": {

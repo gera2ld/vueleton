@@ -41,7 +41,6 @@ async function buildComponent(name) {
   const getOptions = format => {
     const dir = {
       cjs: 'lib',
-      esm: 'es',
     }[format];
     const rollupOptions = {
       input: {
@@ -90,20 +89,6 @@ async function buildComponent(name) {
     await fs.writeFile(`lib/${name}/bundle.js`, `\
 module.exports = require('./index');
 require('./style');
-`, 'utf8');
-  }
-  {
-    const rollupOptions = getOptions('esm');
-    const bundle = await rollup.rollup(rollupOptions.input);
-    await bundle.write(rollupOptions.output);
-    const styleJs = await fileExists(`es/${name}/style.css`) ? `import './style.css';` : '';
-    await fs.writeFile(`es/${name}/style.js`, styleJs, 'utf8');
-    const camelizedName = camelize(name);
-    await fs.writeFile(`es/${name}/bundle.js`, `\
-import ${camelizedName} from './index';
-import './style';
-
-export default ${camelizedName};
 `, 'utf8');
   }
 }
