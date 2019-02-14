@@ -126,20 +126,26 @@ export default {
       let { tooltip } = this;
       const content = this.content || this.$slots.content;
       if (tooltip) {
+        tooltip.placement = placement;
+        tooltip.align = align;
+        tooltip.content = content;
         tooltip.style = style;
       } else {
         tooltip = new Vue({
           data: {
+            placement,
+            align,
+            content,
             style,
           },
           render(h) {
             return h(Tooltip, {
               props: {
-                placement,
-                align,
+                placement: this.placement,
+                align: this.align,
               },
               style: this.style,
-            }, [content]);
+            }, [this.content]);
           },
         })
         .$mount();

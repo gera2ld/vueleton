@@ -30,8 +30,11 @@
     </div>
     Active:
     <div class="demo-tooltip-group">
-      <tooltip placement="top" :noMouse="true" :active="active" content="hello, world">
+      <tooltip placement="left" :noMouse="true" :active="active" content="hello, world">
         <button @click="active = !active">Toggle</button>
+      </tooltip>
+      <tooltip placement="bottom" :noMouse="true" :active="true" :content="enabled ? 'Enabled' : 'Disabled'">
+        <button @click="enabled = !enabled" v-text="enabled ? 'Disable' : 'Enable'" />
       </tooltip>
     </div>
   </section>
@@ -49,6 +52,7 @@ export default {
   data() {
     return {
       active: false,
+      enabled: false,
     };
   },
   mounted() {
