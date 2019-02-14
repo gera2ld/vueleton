@@ -78,6 +78,10 @@ export default {
   },
   watch: {
     shouldShow: 'render',
+    placement: 'render',
+    align: 'render',
+    content: 'render',
+    gap: 'render',
   },
   methods: {
     onEnter() {
