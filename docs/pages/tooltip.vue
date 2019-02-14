@@ -28,6 +28,12 @@
         <button>Right</button>
       </tooltip>
     </div>
+    Active:
+    <div class="demo-tooltip-group">
+      <tooltip placement="top" :noMouse="true" :active="active" content="hello, world">
+        <button @click="active = !active">Toggle</button>
+      </tooltip>
+    </div>
   </section>
 </template>
 
@@ -39,6 +45,11 @@ import store from '~/assets/store';
 export default {
   components: {
     Tooltip,
+  },
+  data() {
+    return {
+      active: false,
+    };
   },
   mounted() {
     store.doc = doc;
