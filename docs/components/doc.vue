@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     initCode() {
-      const doc = this.$refs.doc;
+      const { doc } = this.$refs;
       if (!doc) return;
       const code = doc.querySelectorAll('pre>code');
       code.forEach(el => { hljs.highlightBlock(el); });
