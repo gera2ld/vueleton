@@ -121,6 +121,8 @@ export default {
           top: `${rect.top + rect.height / 2}px`,
           left: `${rect.right + this.gap}px`,
         };
+      } else if (process.env.NODE_ENV !== 'production') {
+        console.warn(`Unknown placement: ${placement}`);
       }
       const { align } = this;
       let { tooltip } = this;
