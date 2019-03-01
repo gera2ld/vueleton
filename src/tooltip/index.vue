@@ -1,5 +1,5 @@
 <template>
-  <span @mouseenter="onEnter" @mouseleave="onLeave">
+  <span :class="{ disabled }" @mouseenter="onEnter" @mouseleave="onLeave">
     <slot></slot>
   </span>
 </template>
@@ -65,6 +65,10 @@ export default {
       type: Number,
       default: 10,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -72,8 +76,11 @@ export default {
     };
   },
   computed: {
+    shouldHandleMouse() {
+      return !this.disabled && !this.noMouse;
+    },
     shouldShow() {
-      return this.active || this.hovered;
+      return !this.disabled && (this.active || this.hovered);
     },
   },
   watch: {
@@ -85,10 +92,10 @@ export default {
   },
   methods: {
     onEnter() {
-      if (!this.noMouse) this.hovered = true;
+      if (this.shouldHandleMouse) this.hovered = true;
     },
     onLeave() {
-      if (!this.noMouse) this.hovered = false;
+      if (this.shouldHandleMouse) this.hovered = false;
     },
     render() {
       if (this.shouldShow) this.update();
