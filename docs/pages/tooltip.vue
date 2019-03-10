@@ -3,52 +3,52 @@
     <h3>Tooltip</h3>
     Alignment:
     <div class="demo-tooltip-group">
-      <tooltip placement="top" align="end" content="hello, world">
+      <vl-tooltip placement="top" align="end" content="hello, world">
         <button>End</button>
-      </tooltip>
-      <tooltip placement="top" content="hello, world">
+      </vl-tooltip>
+      <vl-tooltip placement="top" content="hello, world">
         <button>Center</button>
-      </tooltip>
-      <tooltip placement="top" align="start" content="hello, world">
+      </vl-tooltip>
+      <vl-tooltip placement="top" align="start" content="hello, world">
         <button>Start</button>
-      </tooltip>
+      </vl-tooltip>
     </div>
     Placement:
     <div class="demo-tooltip-group">
-      <tooltip placement="left" content="hello, world">
+      <vl-tooltip placement="left" content="hello, world">
         <button>Left</button>
-      </tooltip>
-      <tooltip placement="top" content="hello, world">
+      </vl-tooltip>
+      <vl-tooltip placement="top" content="hello, world">
         <button>Up</button>
-      </tooltip>
-      <tooltip placement="bottom" content="hello, world">
+      </vl-tooltip>
+      <vl-tooltip placement="bottom" content="hello, world">
         <button>Down</button>
-      </tooltip>
-      <tooltip placement="right" content="hello, world">
+      </vl-tooltip>
+      <vl-tooltip placement="right" content="hello, world">
         <button>Right</button>
-      </tooltip>
+      </vl-tooltip>
     </div>
     Active:
     <div class="demo-tooltip-group">
-      <tooltip placement="left" :noMouse="true" :active="active" content="hello, world">
+      <vl-tooltip placement="left" :noMouse="true" :active="active" content="hello, world">
         <button @click="active = !active">Toggle</button>
-      </tooltip>
-      <tooltip placement="bottom" :noMouse="true" :active="true" :content="enabled ? 'Enabled' : 'Disabled'">
+      </vl-tooltip>
+      <vl-tooltip placement="bottom" :noMouse="true" :active="true" :content="enabled ? 'Enabled' : 'Disabled'">
         <button @click="enabled = !enabled" v-text="enabled ? 'Disable' : 'Enable'" />
-      </tooltip>
+      </vl-tooltip>
     </div>
   </section>
 </template>
 
 <script>
-import Tooltip from 'vueleton/lib/tooltip/bundle';
+import Vue from 'vue';
+import VlTooltip from 'vueleton/lib/tooltip/bundle';
 import doc from '~/components/tooltip/doc.md';
 import store from '~/assets/store';
 
+Vue.use(VlTooltip);
+
 export default {
-  components: {
-    Tooltip,
-  },
   data() {
     return {
       active: false,

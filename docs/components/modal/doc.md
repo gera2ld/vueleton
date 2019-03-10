@@ -12,8 +12,12 @@
 ``` js
 import VlModal from 'vueleton/lib/modal/bundle';
 
+// You may register it
+import Vue from 'vue';
+Vue.use(VlModal);
+
 // Show a child component in modal:
-VlModal.show(child, {
+this.$modal(child, {
   transition: 'fade', // see Vue.js <transition>
 });
 ```

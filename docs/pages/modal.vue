@@ -3,25 +3,25 @@
     <h3>Modal</h3>
     <button @click="onShow">Show modal</button>
     <button @click="onShowMessage">Show message</button>
-    <modal transition="fade" :visible="visible" @close="onClose">
+    <vl-modal transition="fade" :visible="visible" @close="onClose">
       <div class="demo-modal-body">
         <h1>Hello, world!</h1>
         <button @click="onClose">Close</button>
       </div>
-    </modal>
+    </vl-modal>
   </section>
 </template>
 
 <script>
-import Modal from 'vueleton/lib/modal/bundle';
+import Vue from 'vue';
+import VlModal from 'vueleton/lib/modal/bundle';
 import doc from '~/components/modal/doc.md';
 import Message from '~/components/modal/message';
 import store from '~/assets/store';
 
+Vue.use(VlModal);
+
 export default {
-  components: {
-    Modal,
-  },
   data() {
     return {
       visible: false,
@@ -38,7 +38,7 @@ export default {
       this.visible = false;
     },
     onShowMessage() {
-      Modal.show(h => h(Message), {
+      this.$modal(h => h(Message), {
         transition: 'in-out',
       });
     },

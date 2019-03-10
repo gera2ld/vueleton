@@ -1,42 +1,42 @@
 <template>
   <section>
     <h3>Dropdown</h3>
-    <dropdown class="demo-dropdown" :closeAfterClick="true">
+    <vl-dropdown class="demo-dropdown" :closeAfterClick="true">
       <button slot="toggle">Toggle</button>
       <div class="demo-dropdown-item">Menu Item 1</div>
       <div class="demo-dropdown-item">Menu Item 2</div>
       <div class="demo-dropdown-item">Menu Item 3</div>
-    </dropdown>
-    <dropdown class="demo-dropdown">
+    </vl-dropdown>
+    <vl-dropdown class="demo-dropdown">
       <button slot="toggle">Toggle panel</button>
       <div class="demo-panel">
         This is a panel.
       </div>
-    </dropdown>
-    <dropdown class="demo-dropdown" :closeAfterClick="true" direction="up">
+    </vl-dropdown>
+    <vl-dropdown class="demo-dropdown" :closeAfterClick="true" direction="up">
       <button slot="toggle">Toggle up</button>
       <div class="demo-dropdown-item">Menu Item 1</div>
       <div class="demo-dropdown-item">Menu Item 2</div>
       <div class="demo-dropdown-item">Menu Item 3</div>
-    </dropdown>
-    <dropdown class="demo-dropdown" :closeAfterClick="true" align="right">
+    </vl-dropdown>
+    <vl-dropdown class="demo-dropdown" :closeAfterClick="true" align="right">
       <button slot="toggle">Toggle right</button>
       <div class="demo-dropdown-item">Menu Item 1</div>
       <div class="demo-dropdown-item">Menu Item 2</div>
       <div class="demo-dropdown-item">Menu Item 3</div>
-    </dropdown>
+    </vl-dropdown>
   </section>
 </template>
 
 <script>
-import Dropdown from 'vueleton/lib/dropdown/bundle';
+import Vue from 'vue';
+import VlDropdown from 'vueleton/lib/dropdown/bundle';
 import doc from '~/components/dropdown/doc.md';
 import store from '~/assets/store';
 
+Vue.use(VlDropdown);
+
 export default {
-  components: {
-    Dropdown,
-  },
   mounted() {
     store.doc = doc;
   },

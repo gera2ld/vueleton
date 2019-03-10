@@ -1,19 +1,55 @@
 <template>
-  <div
-    class="vl-tooltip"
-    :class="`vl-tooltip-${placement} vl-tooltip-align-${align}`">
-    <i></i>
-    <div class="vl-tooltip-wrap">
-      <div class="vl-tooltip-content">
-        <slot></slot>
-      </div>
-    </div>
-  </div>
+  <span :class="{ disabled }" @mouseenter="onEnter" @mouseleave="onLeave">
+    <slot></slot>
+  </span>
 </template>
 
 <script>
+import Vue from 'vue';
+import TooltipContent from './tooltip-content.vue';
+
+const tooltips = [];
+const throttledUpdate = throttleWithRAF(updateTooltips);
+document.addEventListener('scroll', throttledUpdate, true);
+window.addEventListener('resize', throttledUpdate, false);
+
+function throttleWithRAF(func) {
+  let running = false;
+  function exec() {
+    func();
+    running = false;
+  }
+  return () => {
+    if (running) return;
+    requestAnimationFrame(exec);
+    running = true;
+  };
+}
+
+function updateTooltips() {
+  tooltips.forEach(tooltip => {
+    tooltip.render();
+  });
+}
+function addTooltip(tooltip) {
+  tooltips.push(tooltip);
+}
+function removeTooltip(tooltip) {
+  tooltip.clean();
+  const i = tooltips.indexOf(tooltip);
+  if (i >= 0) tooltips.splice(i, 1);
+}
+
 export default {
   props: {
+    active: {
+      type: Boolean,
+      default: false,
+    },
+    noMouse: {
+      type: Boolean,
+      default: false,
+    },
     placement: {
       type: String,
       default: 'auto-y',
@@ -22,116 +58,127 @@ export default {
       type: String,
       default: 'center', // start | center | end
     },
+    content: {
+      type: String,
+    },
+    gap: {
+      type: Number,
+      default: 10,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      hovered: false,
+    };
+  },
+  computed: {
+    shouldHandleMouse() {
+      return !this.disabled && !this.noMouse;
+    },
+    shouldShow() {
+      return !this.disabled && (this.active || this.hovered);
+    },
+  },
+  watch: {
+    shouldShow: 'render',
+    placement: 'render',
+    align: 'render',
+    content: 'render',
+    gap: 'render',
+  },
+  methods: {
+    onEnter() {
+      if (this.shouldHandleMouse) this.hovered = true;
+    },
+    onLeave() {
+      if (this.shouldHandleMouse) this.hovered = false;
+    },
+    render() {
+      if (this.shouldShow) this.update();
+      else this.clean();
+    },
+    update() {
+      const rect = this.$el.getBoundingClientRect();
+      let style;
+      let { placement } = this;
+      if (placement === 'auto-y') {
+        placement = rect.bottom < document.body.clientHeight / 2 ? 'bottom' : 'top';
+      }
+      if (placement === 'top') {
+        style = {
+          top: `${rect.top - this.gap}px`,
+          left: `${rect.left + rect.width / 2}px`,
+        };
+      } else if (placement === 'bottom') {
+        style = {
+          top: `${rect.bottom + this.gap}px`,
+          left: `${rect.left + rect.width / 2}px`,
+        };
+      } else if (placement === 'left') {
+        style = {
+          top: `${rect.top + rect.height / 2}px`,
+          left: `${rect.left - this.gap}px`,
+        };
+      } else if (placement === 'right') {
+        style = {
+          top: `${rect.top + rect.height / 2}px`,
+          left: `${rect.right + this.gap}px`,
+        };
+      } else if (process.env.NODE_ENV !== 'production') {
+        console.warn(`Unknown placement: ${placement}`);
+      }
+      const { align } = this;
+      let { tooltip } = this;
+      const content = this.content || this.$slots.content;
+      if (tooltip) {
+        tooltip.placement = placement;
+        tooltip.align = align;
+        tooltip.content = content;
+        tooltip.style = style;
+      } else {
+        tooltip = new Vue({
+          data: {
+            placement,
+            align,
+            content,
+            style,
+          },
+          render(h) {
+            return h(TooltipContent, {
+              props: {
+                placement: this.placement,
+                align: this.align,
+              },
+              style: this.style,
+            }, [this.content]);
+          },
+        })
+        .$mount();
+        document.body.appendChild(tooltip.$el);
+        this.tooltip = tooltip;
+      }
+    },
+    clean() {
+      if (this.tooltip) {
+        const { $el } = this.tooltip;
+        this.tooltip.$destroy();
+        this.tooltip = null;
+        $el.parentNode.removeChild($el);
+      }
+    },
+  },
+  created() {
+    addTooltip(this);
+  },
+  mounted() {
+    this.render();
+  },
+  beforeDestroy() {
+    removeTooltip(this);
   },
 };
 </script>
-
-<style>
-$bg-color: rgba(0,0,0,.8);
-$border-side-width: 4px;
-$border-side: $border-side-width solid transparent;
-$border-base: 6px solid $bg-color;
-$max-width: 250px;
-
-.vl-tooltip {
-  position: absolute;
-  color: white;
-  font-size: 12px;
-  line-height: 1.4;
-  z-index: 100;
-  > i {
-    position: absolute;
-  }
-  > .vl-tooltip-wrap {
-    position: absolute;
-  }
-  &-wrap {
-    width: $max-width;
-  }
-  &-content {
-    display: inline-block;
-    padding: 8px;
-    background: $bg-color;
-    border-radius: 6px;
-    text-align: left;
-  }
-  &-top {
-    > i {
-      top: 0;
-      border-top: $border-base;
-      border-left: $border-side;
-      border-right: $border-side;
-    }
-    > .vl-tooltip-wrap {
-      bottom: 0;
-    }
-  }
-  &-bottom {
-    > i {
-      bottom: 0;
-      border-left: $border-side;
-      border-right: $border-side;
-      border-bottom: $border-base;
-    }
-    > .vl-tooltip-wrap {
-      top: 0;
-    }
-  }
-  &-top,
-  &-bottom {
-    > i {
-      margin-left: -$border-side-width;
-    }
-    &.vl-tooltip-align-center {
-      > .vl-tooltip-wrap {
-        margin-left: calc(-$max-width / 2);
-        text-align: center;
-      }
-    }
-    &.vl-tooltip-align-start {
-      > .vl-tooltip-wrap {
-        margin-left: -10px;
-        text-align: left;
-      }
-    }
-    &.vl-tooltip-align-end {
-      > .vl-tooltip-wrap {
-        right: 0;
-        margin-right: -10px;
-        text-align: right;
-      }
-    }
-  }
-  &-left {
-    > i {
-      left: 0;
-      border-top: $border-side;
-      border-bottom: $border-side;
-      border-left: $border-base;
-    }
-    > .vl-tooltip-wrap {
-      right: 0;
-      text-align: right;
-      transform: translateY(-50%);
-    }
-  }
-  &-right {
-    > i {
-      right: 0;
-      border-top: $border-side;
-      border-bottom: $border-side;
-      border-right: $border-base;
-    }
-    > .vl-tooltip-wrap {
-      left: 0;
-      transform: translateY(-50%);
-    }
-  }
-  &-left,
-  &-right {
-    > i {
-      margin-top: -$border-side-width;
-    }
-  }
-}
-</style>
