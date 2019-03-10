@@ -6,21 +6,21 @@ function install(Vue) {
 
   function showModal(message, props) {
     const data = {
-      props: Object.assign({}, props, { visible: true }),
-      on: {
-        close,
-        'after-leave': destroy,
-      },
+      ...props,
+      visible: true,
+    };
+    const on = {
+      close,
+      'after-leave': destroy,
     };
     let vm = new Vue({
-      data: data.props,
+      data,
       render: h => {
         const child = typeof message === 'function' ? message(h) : message;
-        // Must be wrapped for vm.$el to find the element,
-        // perhaps due to bug of <transition>
-        return h('div', [
-          h(VlModal, data, [child]),
-        ]);
+        return h(VlModal, {
+          props: data,
+          on,
+        }, [child]);
       },
     })
     .$mount();
@@ -28,7 +28,7 @@ function install(Vue) {
     return { close };
 
     function close() {
-      data.props.visible = false;
+      data.visible = false;
     }
     function destroy() {
       if (vm) {

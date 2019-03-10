@@ -1,10 +1,12 @@
 <template>
-  <transition :name="transition" @after-leave="onAfterLeave" appear>
-    <div class="vl-modal" v-if="visible">
-      <div class="vl-modal-backdrop" v-if="backdrop" @click="onBackdropClick"></div>
-      <slot></slot>
-    </div>
-  </transition>
+  <div>
+    <transition :name="transition" @after-leave="onAfterLeave" appear>
+      <div class="vl-modal" v-if="visible">
+        <div class="vl-modal-backdrop" v-if="backdrop" @click="onBackdropClick"></div>
+        <slot></slot>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>
