@@ -27,7 +27,7 @@ function throttleWithRAF(func) {
 }
 
 function updateTooltips() {
-  tooltips.forEach(tooltip => {
+  tooltips.forEach((tooltip) => {
     tooltip.render();
   });
 }

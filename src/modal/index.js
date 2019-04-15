@@ -15,7 +15,7 @@ function install(Vue) {
     };
     let vm = new Vue({
       data,
-      render: h => {
+      render: (h) => {
         const child = typeof message === 'function' ? message(h) : message;
         return h(VlModal, {
           props: data,

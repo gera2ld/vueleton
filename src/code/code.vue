@@ -16,7 +16,7 @@ export default {
       const { cm } = this;
       if (!cm) return;
       Object.keys({ ...oldOptions, ...options })
-      .forEach(key => {
+      .forEach((key) => {
         if (options[key] !== oldOptions[key]) {
           cm.setOption(key, options[key]);
         }
@@ -33,7 +33,7 @@ export default {
     const CodeMirror = require('codemirror'); // eslint-disable-line global-require, import/no-unresolved
     this.cm = CodeMirror(this.$el, Object.assign({}, defaultOptions, this.options));
     this.$emit('ready', this.cm);
-    this.cm.on('change', cm => {
+    this.cm.on('change', (cm) => {
       this.$emit('input', this.cached = cm.getValue());
     });
     this.update(this.value);

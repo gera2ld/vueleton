@@ -13,10 +13,6 @@ async function build() {
   await Promise.all(items.filter(name => !name.startsWith('.')).map(buildComponent));
 }
 
-function camelize(name) {
-  return name.replace(/(?:^|-)(\w)/, (m, g) => g.toUpperCase());
-}
-
 async function fileExists(file) {
   try {
     const stat = await fs.stat(file);
@@ -47,27 +43,19 @@ async function buildComponent(name) {
       input: {
         input,
         plugins: [
+          babel({
+            exclude: 'node_modules/**',
+            runtimeHelpers: true,
+          }),
           commonjs(),
           vue({
             css: false,
             style: {
               postcssCleanOptions: { disabled: true },
-              postcssOptions: {
-                parser: require('postcss-scss'),
-              },
-              postcssPlugins: [
-                require('precss'),
-                require('postcss-color-function'),
-                require('postcss-calc'),
-              ],
             },
           }),
           postcss({
             extract: `${dir}/${name}/style.css`,
-          }),
-          babel({
-            exclude: 'node_modules/**',
-            runtimeHelpers: true,
           }),
         ],
         external: id => id.startsWith('@babel/runtime/') || [

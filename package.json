@@ -23,26 +23,15 @@
     "vue": "2.x"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/plugin-transform-runtime": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
-    "babel-eslint": "^10.0.1",
+    "@gera2ld/plaid": "~1.4.0",
+    "@gera2ld/plaid-vue": "~1.4.0",
     "eslint": "^5.15.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-html": "^5.0.3",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-vue": "^5.2.2",
     "postcss": "^7.0.14",
-    "postcss-calc": "^7.0.1",
-    "postcss-color-function": "^4.0.1",
-    "postcss-scss": "^2.0.0",
-    "precss": "^4.0.0",
     "rollup": "^1.6.0",
     "rollup-plugin-babel": "^4.3.1",
     "rollup-plugin-commonjs": "^9.2.1",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-vue": "^4.7.2",
-    "vue": "^2.6.8",
     "vue-template-compiler": "^2.6.8"
   },
   "dependencies": {
