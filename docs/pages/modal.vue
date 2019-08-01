@@ -3,6 +3,7 @@
     <h3>Modal</h3>
     <button @click="onShow">Show modal</button>
     <button @click="onShowMessage">Show message</button>
+    <button @click="onShowMessageStatic">Show message with VlModal.show</button>
     <vl-modal transition="fade" :visible="visible" @close="onClose">
       <div class="demo-modal-body">
         <h1>Hello, world!</h1>
@@ -39,6 +40,11 @@ export default {
     },
     onShowMessage() {
       this.$modal(h => h(Message), {
+        transition: 'in-out',
+      });
+    },
+    onShowMessageStatic() {
+      VlModal.show(h => h(Message), {
         transition: 'in-out',
       });
     },
