@@ -23,19 +23,22 @@
     "vue": "2.x"
   },
   "devDependencies": {
-    "@gera2ld/plaid": "~1.4.0",
-    "@gera2ld/plaid-vue": "~1.4.0",
-    "eslint": "^5.15.1",
-    "postcss": "^7.0.14",
-    "rollup": "^1.6.0",
-    "rollup-plugin-babel": "^4.3.1",
-    "rollup-plugin-commonjs": "^9.2.1",
+    "@gera2ld/plaid": "~1.4.10",
+    "@gera2ld/plaid-vue": "~1.4.9",
+    "eslint": "^6.3.0",
+    "postcss": "^7.0.17",
+    "rollup": "^1.20.3",
+    "rollup-plugin-alias": "^2.0.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-postcss": "^2.0.3",
-    "rollup-plugin-vue": "^4.7.2",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-vue": "^5.0.1",
     "vue-template-compiler": "^2.6.8"
   },
   "dependencies": {
-    "@babel/runtime": "^7.3.4"
+    "@babel/runtime": "^7.5.5"
   },
   "repository": {
     "type": "git",

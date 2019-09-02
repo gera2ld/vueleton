@@ -1,10 +1,12 @@
 module.exports = {
-  extends: require.resolve('@gera2ld/plaid/config/babelrc'),
+  extends: require.resolve('@gera2ld/plaid/config/babelrc-base'),
   presets: [
-    ['@babel/preset-env', {
-      ...process.env.BABEL_ENV !== 'test' && {
-        modules: false,
+  ],
+  plugins: [
+    ['module-resolver', {
+      alias: {
+        '#': './src',
       },
     }],
-  ],
+  ].filter(Boolean),
 };

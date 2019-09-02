@@ -1,10 +1,13 @@
 const fs = require('fs').promises;
-const util = require('util');
 const rollup = require('rollup');
-const babel = require('rollup-plugin-babel');
 const vue = require('rollup-plugin-vue');
 const postcss = require('rollup-plugin-postcss');
-const commonjs = require('rollup-plugin-commonjs');
+const { getRollupPlugins, getExternal, DIST } = require('./util');
+
+const external = getExternal([
+  'codemirror',
+  'vue',
+]);
 
 build();
 
@@ -43,11 +46,7 @@ async function buildComponent(name) {
       input: {
         input,
         plugins: [
-          babel({
-            exclude: 'node_modules/**',
-            runtimeHelpers: true,
-          }),
-          commonjs(),
+          ...getRollupPlugins(),
           vue({
             css: false,
             style: {
@@ -58,10 +57,7 @@ async function buildComponent(name) {
             extract: `${dir}/${name}/style.css`,
           }),
         ],
-        external: id => id.startsWith('@babel/runtime/') || [
-          'codemirror',
-          'vue',
-        ].includes(id),
+        external,
       },
       output: {
         file: `${dir}/${name}/index.js`,
