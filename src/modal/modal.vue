@@ -1,8 +1,12 @@
 <template>
   <div>
     <transition :name="transition" @after-leave="onAfterLeave" appear>
-      <div class="vl-modal" v-if="visible">
-        <div class="vl-modal-backdrop" v-if="backdrop" @click="onBackdropClick"></div>
+      <div :class="`vl-modal ${modalClass}`" v-if="visible">
+        <div
+          :class="`vl-modal-backdrop ${backdropClass}`"
+          v-if="backdrop"
+          @click="onBackdropClick"
+        />
         <slot></slot>
       </div>
     </transition>
@@ -12,7 +16,18 @@
 <script>
 export default {
   props: {
-    transition: String,
+    modalClass: {
+      type: String,
+      default: '',
+    },
+    backdropClass: {
+      type: String,
+      default: '',
+    },
+    transition: {
+      type: String,
+      default: '',
+    },
     visible: {
       type: Boolean,
       default: false,

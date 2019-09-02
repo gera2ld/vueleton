@@ -40,6 +40,8 @@ export default {
     },
     onShowMessage() {
       this.$modal(h => h(Message), {
+        modalClass: 'my-modal',
+        backdropClass: 'my-backdrop',
         transition: 'in-out',
       });
     },
