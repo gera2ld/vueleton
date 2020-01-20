@@ -30,7 +30,7 @@ export default {
 $bg-color: rgba(0,0,0,.8);
 $border-side-width: 4px;
 $border-side: $border-side-width solid transparent;
-$border-base: 6px solid $bg-color;
+$border-base: 6px solid currentColor;
 $max-width: 250px;
 
 .vl-tooltip {
@@ -41,6 +41,7 @@ $max-width: 250px;
   z-index: 100;
   > i {
     position: absolute;
+    color: $bg-color;
   }
   > .vl-tooltip-wrap {
     position: absolute;
