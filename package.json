@@ -23,9 +23,9 @@
     "vue": "2.x"
   },
   "devDependencies": {
-    "@gera2ld/plaid": "~2.0.3",
-    "@gera2ld/plaid-common-vue": "~2.0.3",
-    "@gera2ld/plaid-rollup": "~2.0.4",
+    "@gera2ld/plaid": "~2.0.5",
+    "@gera2ld/plaid-common-vue": "~2.0.5",
+    "@gera2ld/plaid-rollup": "~2.0.5",
     "eslint": "^7.3.1",
     "rollup-plugin-vue": "^5.1.9"
   },

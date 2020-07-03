@@ -27,18 +27,8 @@ module.exports = {
         path.resolve(__dirname, '../lib'),
         /node_modules/,
       ],
-      plugins: [
-        '@babel/plugin-proposal-export-default-from',
-      ],
     },
-    postcss: {
-      parser: require('postcss-scss'),
-      plugins: [
-        require('precss'),
-        require('postcss-color-function'),
-        require('postcss-calc'),
-      ],
-    },
+    postcss: require('../.postcssrc'),
   },
 };
 
