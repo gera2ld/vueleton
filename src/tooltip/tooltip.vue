@@ -95,7 +95,7 @@ export default {
       if (this.shouldHandleMouse) this.hovered = true;
     },
     onLeave() {
-      if (this.shouldHandleMouse) this.hovered = false;
+      this.hovered = false;
     },
     render() {
       if (this.shouldShow) this.update();
