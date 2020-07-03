@@ -1,4 +1,4 @@
-const { combineConfigSync } = require('@gera2ld/plaid/util/helpers');
+const { combineConfigSync } = require('@gera2ld/plaid');
 const precss = require('@gera2ld/plaid/postcss/precss');
 
 module.exports = combineConfigSync({}, [precss]);

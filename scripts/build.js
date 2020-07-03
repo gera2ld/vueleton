@@ -1,10 +1,9 @@
 const fs = require('fs').promises;
 const rollup = require('rollup');
 const vue = require('rollup-plugin-vue');
-const postcss = require('rollup-plugin-postcss');
-const { getRollupPlugins, getExternal, DIST } = require('./util');
+const { getRollupPlugins, getRollupExternal } = require('@gera2ld/plaid');
 
-const external = getExternal([
+const external = getRollupExternal([
   'codemirror',
   'vue',
 ]);
@@ -46,15 +45,16 @@ async function buildComponent(name) {
       input: {
         input,
         plugins: [
-          ...getRollupPlugins(),
           vue({
             css: false,
             style: {
               postcssCleanOptions: { disabled: true },
             },
           }),
-          postcss({
-            extract: `${dir}/${name}/style.css`,
+          ...getRollupPlugins({
+            postcss: {
+              extract: 'style.css',
+            },
           }),
         ],
         external,
