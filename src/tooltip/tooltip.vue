@@ -1,5 +1,11 @@
 <template>
-  <span :class="{ disabled }" @mouseenter="onEnter" @mouseleave="onLeave">
+  <span
+    :class="{ disabled }"
+    @mouseenter="onEnter"
+    @mouseleave="onLeave"
+    @tipshow.stop="hovered = true"
+    @tiphide.stop="hovered = false"
+    @tiptoggle.stop="hovered = !hovered">
     <slot></slot>
   </span>
 </template>
