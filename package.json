@@ -17,8 +17,8 @@
     "lint": "eslint --ext .js,.vue .",
     "ci": "run-s lint",
     "start:docs": "cd docs && nuxt",
-    "build:docs": "cd docs && nuxt generate",
-    "upload:docs": "gh-pages -d docs/dist",
+    "build:docs": "cd docs && nuxt generate && touch dist/.nojekyll",
+    "upload:docs": "gh-pages -td docs/dist",
     "deploy": "run-s build:docs upload:docs"
   },
   "keywords": [
