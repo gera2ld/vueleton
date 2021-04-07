@@ -2,7 +2,8 @@ const path = require('path');
 const IS_PRD = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  mode: 'spa',
+  ssr: false,
+  target: 'static',
   head: {
     title: 'Vueleton',
     meta: [
@@ -28,7 +29,7 @@ module.exports = {
         /node_modules/,
       ],
     },
-    postcss: require('../.postcssrc'),
+    postcss: require('@gera2ld/plaid/config/postcssrc'),
   },
 };
 

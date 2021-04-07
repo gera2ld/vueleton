@@ -26,3 +26,9 @@ placement          | Placement of the tooltip, possible values are `top`, `botto
 noMouse            | If set to `true`, mouse events will be ignored and the tooltip will be visible only if `active` is set to `true`. | `false`
 active             | If set to `true`, the tooltip will be visible no matter whether the mouse is over. | `false`
 disabled           | If set to `true`, the class name of the tooltip will be set to `disabled` and all mouse events will be ignored. | `false`
+
+DOM Events:
+
+- `tipshow` - Show tooltip just like mouse hovered
+- `tiphide` - Hide tooltip if it's visible
+- `tiptoggle` - Show tooltip if it's invisible and hide it if it's visible

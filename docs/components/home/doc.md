@@ -6,17 +6,16 @@
 Vueleton is a component library for [Vue.js](https://vuejs.org/) 2.
 It contains useful components with simple style which are easy to be extended.
 
-Installation
----
-``` sh
+## Installation
+
+```bash
 $ npm i vueleton -S
 # or
 $ yarn add vueleton
 ```
 
-Usage
----
+## Usage
 
-``` js
+```js
 import VlDropdown from 'vueleton/lib/dropdown/bundle';
 ```
