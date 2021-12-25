@@ -17,5 +17,5 @@ $ yarn add vueleton
 ## Usage
 
 ```js
-import VlDropdown from 'vueleton/lib/dropdown/bundle';
+import VlDropdown from 'vueleton/lib/dropdown';
 ```

@@ -5,11 +5,7 @@
 ```
 
 ``` js
-import VlCode from 'vueleton/lib/code/bundle';
-
-// You may register it
-import Vue from 'vue';
-Vue.use(VlCode);
+import VlCode from 'vueleton/lib/code';
 ```
 
 ### API

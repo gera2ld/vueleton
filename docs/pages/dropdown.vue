@@ -30,13 +30,14 @@
 
 <script>
 import Vue from 'vue';
-import VlDropdown from 'vueleton/lib/dropdown/bundle';
+import VlDropdown from 'vueleton/lib/dropdown';
 import doc from '~/components/dropdown/doc.md';
 import store from '~/assets/store';
 
-Vue.use(VlDropdown);
-
 export default {
+  components: {
+    VlDropdown,
+  },
   mounted() {
     store.doc = doc;
   },

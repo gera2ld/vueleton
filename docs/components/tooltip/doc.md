@@ -7,11 +7,7 @@
 ```
 
 ``` js
-import VlTooltip from 'vueleton/lib/tooltip/bundle';
-
-// You may register it
-import Vue from 'vue';
-Vue.use(VlTooltip);
+import VlTooltip from 'vueleton/lib/tooltip';
 ```
 
 ### API

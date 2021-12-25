@@ -41,14 +41,14 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import VlTooltip from 'vueleton/lib/tooltip/bundle';
+import VlTooltip from 'vueleton/lib/tooltip';
 import doc from '~/components/tooltip/doc.md';
 import store from '~/assets/store';
 
-Vue.use(VlTooltip);
-
 export default {
+  components: {
+    VlTooltip,
+  },
   data() {
     return {
       active: false,

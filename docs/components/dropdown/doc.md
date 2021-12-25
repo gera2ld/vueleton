@@ -10,11 +10,7 @@
 ```
 
 ``` js
-import VlDropdown from 'vueleton/lib/dropdown/bundle';
-
-// You may register it
-import Vue from 'vue';
-Vue.use(VlDropdown);
+import VlDropdown from 'vueleton/lib/dropdown';
 ```
 
 ### API

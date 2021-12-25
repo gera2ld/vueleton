@@ -29,7 +29,11 @@ module.exports = {
         /node_modules/,
       ],
     },
-    postcss: require('@gera2ld/plaid/config/postcssrc'),
+    postcss: {
+      plugins: [
+        require('postcss-nested'),
+      ],
+    },
   },
 };
 

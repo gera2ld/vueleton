@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import marked from 'marked';
+import { marked } from 'marked';
 import hljs from 'highlight.js/lib/core';
 import 'highlight.js/styles/github.css';
 import xml from 'highlight.js/lib/languages/xml';

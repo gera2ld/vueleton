@@ -21,8 +21,12 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import Teleport from 'vueleton/lib/teleport';
 import Doc from '~/components/doc';
 import store from '~/assets/store';
+
+Vue.component('teleport', Teleport);
 
 export default {
   components: {

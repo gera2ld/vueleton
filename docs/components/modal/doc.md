@@ -1,8 +1,8 @@
 ### Usage
 
 ``` html
-<button @click="visible = true">Show modal</button>
-<vl-modal :visible="visible" @close="visible = false">
+<button @click="show = true">Show modal</button>
+<vl-modal :show="show" @close="show = false">
   <div class="content">
     <p>This is modal body.</p>
   </div>
@@ -10,16 +10,7 @@
 ```
 
 ``` js
-import VlModal from 'vueleton/lib/modal/bundle';
-
-// You may register it
-import Vue from 'vue';
-Vue.use(VlModal);
-
-// Show a child component in modal:
-this.$modal(child, {
-  transition: 'fade', // see Vue.js <transition>
-});
+import VlModal from 'vueleton/lib/modal';
 ```
 
 ### API
@@ -28,7 +19,7 @@ Show a modal with optional backdrop.
 
 Props         | Description                         | Default
 --------------|-------------------------------------|---------
-visible       | Whether to show the modal.          | `false`
+show       | Whether to show the modal.          | `false`
 backdrop      | Backdrop options, if `backdrop === false`, there will be no backdrop. `backdrop === true` is the same as `backdrop === { close: true }`. If `backdrop.close` is true, a `close` event will be emitted when clicked on backdrop.  | `{ close: true }`
 
 `VlModal.show(childComponent, props)`:
