@@ -5,7 +5,8 @@
 
 > Vueleton = Vue + Skeleton
 
-Vueleton is a component library for [Vue.js](https://vuejs.org/) 2.
+Vueleton is a component library for [Vue.js](https://vuejs.org/) 2/3.
+
 It contains useful components with simple style which are easy to be extended.
 
 For more details, see [document](https://gera2ld.github.io/vueleton/).
