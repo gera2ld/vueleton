@@ -2,13 +2,9 @@ module.exports = {
   root: true,
   extends: [
     require.resolve('@gera2ld/plaid/eslint'),
-    require.resolve('@gera2ld/plaid-common-vue/eslint'),
+    require.resolve('@gera2ld/plaid-common-vue/eslint/vue3-js'),
   ],
   rules: {
-  },
-  settings: {
-    'import/core-modules': [
-      'vue',
-    ],
+    'no-constant-condition': 'off',
   },
 }

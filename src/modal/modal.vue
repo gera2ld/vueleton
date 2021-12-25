@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <teleport to="body">
     <transition :name="transition" @after-leave="onAfterLeave" appear>
-      <div :class="`vl-modal ${modalClass}`" v-if="visible">
+      <div :class="`vl-modal ${modalClass}`" v-if="show">
         <div
           :class="`vl-modal-backdrop ${backdropClass}`"
           v-if="backdrop"
@@ -10,11 +10,12 @@
         <slot></slot>
       </div>
     </transition>
-  </div>
+  </teleport>
 </template>
 
 <script>
 export default {
+  name: 'vl-modal',
   props: {
     modalClass: {
       type: String,
@@ -28,7 +29,7 @@ export default {
       type: String,
       default: '',
     },
-    visible: {
+    show: {
       type: Boolean,
       default: false,
     },
@@ -52,22 +53,4 @@ export default {
 };
 </script>
 
-<style>
-.vl-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  text-align: center;
-  &-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,.4);
-    z-index: -1;
-  }
-}
-</style>
+<style src="./style.css"></style>

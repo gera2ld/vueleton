@@ -2,8 +2,14 @@
   <div
     class="vl-dropdown"
     :class="`vl-dropdown-${align} vl-dropdown-${direction}`"
-    @mouseup="onMouseUp">
-    <div class="vl-dropdown-toggle" @click="onToggle" @focus="onFocus" @blur="onBlur">
+    @mouseup="onMouseUp"
+  >
+    <div
+      class="vl-dropdown-toggle"
+      @click="onToggle"
+      @focus="onFocus"
+      @blur="onBlur"
+    >
       <slot name="toggle"></slot>
     </div>
     <div class="vl-dropdown-menu" v-show="active" @mousedown.stop>
@@ -14,6 +20,7 @@
 
 <script>
 export default {
+  name: 'vl-dropdown',
   props: {
     // If true, the dropdown menu will close on menu clicked.
     closeAfterClick: {
@@ -72,7 +79,8 @@ export default {
     },
     onBlur() {
       const { activeElement } = document;
-      if (activeElement !== document.body && !this.$el.contains(activeElement)) this.onClose();
+      if (activeElement !== document.body && !this.$el.contains(activeElement))
+        this.onClose();
     },
     onMouseUp() {
       if (this.closeAfterClick) this.onClose();
@@ -81,27 +89,4 @@ export default {
 };
 </script>
 
-<style>
-.vl-dropdown {
-  position: relative;
-  display: inline-block;
-  &-toggle {
-    cursor: pointer;
-  }
-  &-menu {
-    position: absolute;
-    z-index: 10;
-    .vl-dropdown-right & {
-      right: 0;
-    }
-    .vl-dropdown-down & {
-      top: 100%;
-      margin-top: 5px;
-    }
-    .vl-dropdown-up & {
-      bottom: 100%;
-      margin-bottom: 5px;
-    }
-  }
-}
-</style>
+<style src="./style.css"></style>

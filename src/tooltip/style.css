@@ -1,0 +1,105 @@
+:root {
+  --vl-tooltip-bg: rgba(0,0,0,.8);
+  --vl-tooltip-max-width: 250px;
+  --vl-tooltip-arrow-width: 4px;
+  --vl-tooltip-arrow-height: 6px;
+}
+
+.vl-tooltip {
+  position: absolute;
+  color: white;
+  font-size: 12px;
+  line-height: 1.4;
+  z-index: 100;
+  > i {
+    position: absolute;
+    color: var(--vl-tooltip-bg);
+  }
+  > .vl-tooltip-wrap {
+    position: absolute;
+  }
+  &-wrap {
+    width: var(--vl-tooltip-max-width);
+  }
+  &-content {
+    display: inline-block;
+    padding: 8px;
+    background: var(--vl-tooltip-bg);
+    border-radius: 6px;
+    text-align: left;
+  }
+  &-top,
+  &-bottom {
+    > i {
+      border-left: var(--vl-tooltip-arrow-width) solid transparent;
+      border-right: var(--vl-tooltip-arrow-width) solid transparent;
+      margin-left: calc(var(--vl-tooltip-arrow-width) * -1);
+    }
+    &.vl-tooltip-align-center {
+      > .vl-tooltip-wrap {
+        margin-left: calc(var(--vl-tooltip-max-width) / -2);
+        text-align: center;
+      }
+    }
+    &.vl-tooltip-align-start {
+      > .vl-tooltip-wrap {
+        margin-left: -10px;
+        text-align: left;
+      }
+    }
+    &.vl-tooltip-align-end {
+      > .vl-tooltip-wrap {
+        right: 0;
+        margin-right: -10px;
+        text-align: right;
+      }
+    }
+  }
+  &-left,
+  &-right {
+    > i {
+      border-top: var(--vl-tooltip-arrow-width) solid transparent;
+      border-bottom: var(--vl-tooltip-arrow-width) solid transparent;
+      margin-top: calc(var(--vl-tooltip-arrow-width) * -1);
+    }
+  }
+  &-top {
+    > i {
+      top: 0;
+      border-top: var(--vl-tooltip-arrow-height) solid currentColor;
+    }
+    > .vl-tooltip-wrap {
+      bottom: 0;
+    }
+  }
+  &-bottom {
+    > i {
+      bottom: 0;
+      border-bottom: var(--vl-tooltip-arrow-height) solid currentColor;
+    }
+    > .vl-tooltip-wrap {
+      top: 0;
+    }
+  }
+  &-left {
+    > i {
+      left: 0;
+      border-left: var(--vl-tooltip-arrow-height) solid currentColor;
+    }
+    > .vl-tooltip-wrap {
+      right: 0;
+      text-align: right;
+      transform: translateY(-50%);
+    }
+  }
+  &-right {
+    > i {
+      right: 0;
+      border-right: var(--vl-tooltip-arrow-height) solid currentColor;
+    }
+    > .vl-tooltip-wrap {
+      left: 0;
+      transform: translateY(-50%);
+    }
+  }
+}

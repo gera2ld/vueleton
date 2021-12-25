@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'vl-dragger',
   props: {
     tickTime: {
       default: 200,
@@ -43,8 +44,9 @@ export default {
       });
     },
     findTouch(e) {
-      return Array.from(e.changedTouches)
-      .find(({ identifier }) => identifier === this.dragging.id);
+      return Array.from(e.changedTouches).find(
+        ({ identifier }) => identifier === this.dragging.id
+      );
     },
     onTouchMove(e) {
       const touch = this.findTouch(e);
@@ -65,10 +67,10 @@ export default {
         y: e.clientY,
       };
       this.dragging = dragging;
-      while (true) { // eslint-disable-line no-constant-condition
-        await new Promise(resolve => setTimeout(resolve, this.tickTime));
+      while (true) {
+        await new Promise((resolve) => setTimeout(resolve, this.tickTime));
         if (dragging !== this.dragging) break;
-        await this.$emit('tick', dragging);
+        this.$emit('tick', dragging);
       }
     },
     handleUpdate(e) {

@@ -5,13 +5,25 @@
     @mouseleave="onLeave"
     @tipshow.stop="hovered = true"
     @tiphide.stop="hovered = false"
-    @tiptoggle.stop="hovered = !hovered">
+    @tiptoggle.stop="hovered = !hovered"
+  >
     <slot></slot>
+    <teleport to="body">
+      <TooltipContent
+        v-if="tooltip"
+        :placement="tooltip.placement"
+        :align="tooltip.align"
+        :style="tooltip.style"
+      >
+        <slot name="content">
+          {{ content }}
+        </slot>
+      </TooltipContent>
+    </teleport>
   </span>
 </template>
 
 <script>
-import Vue from 'vue';
 import TooltipContent from './tooltip-content.vue';
 
 const tooltips = [];
@@ -47,6 +59,10 @@ function removeTooltip(tooltip) {
 }
 
 export default {
+  name: 'vl-tooltip',
+  components: {
+    TooltipContent,
+  },
   props: {
     active: {
       type: Boolean,
@@ -79,6 +95,7 @@ export default {
   data() {
     return {
       hovered: false,
+      tooltip: null,
     };
   },
   computed: {
@@ -112,7 +129,8 @@ export default {
       let style;
       let { placement } = this;
       if (placement === 'auto-y') {
-        placement = rect.bottom < document.body.clientHeight / 2 ? 'bottom' : 'top';
+        placement =
+          rect.bottom < document.body.clientHeight / 2 ? 'bottom' : 'top';
       }
       if (placement === 'top') {
         style = {
@@ -137,43 +155,15 @@ export default {
       } else if (process.env.NODE_ENV !== 'production') {
         console.warn(`Unknown placement: ${placement}`);
       }
-      const { align } = this;
-      let { tooltip } = this;
-      const content = this.content || this.$slots.content;
-      if (tooltip) {
-        tooltip.placement = placement;
-        tooltip.align = align;
-        tooltip.content = content;
-        tooltip.style = style;
-      } else {
-        tooltip = new Vue({
-          data: {
-            placement,
-            align,
-            content,
-            style,
-          },
-          render(h) {
-            return h(TooltipContent, {
-              props: {
-                placement: this.placement,
-                align: this.align,
-              },
-              style: this.style,
-            }, [this.content]);
-          },
-        })
-        .$mount();
-        document.body.appendChild(tooltip.$el);
-        this.tooltip = tooltip;
-      }
+      this.tooltip = {
+        placement,
+        align: this.align,
+        style,
+      };
     },
     clean() {
       if (this.tooltip) {
-        const { $el } = this.tooltip;
-        this.tooltip.$destroy();
         this.tooltip = null;
-        $el.parentNode.removeChild($el);
       }
     },
   },
@@ -183,7 +173,7 @@ export default {
   mounted() {
     this.render();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     removeTooltip(this);
   },
 };
