@@ -6,7 +6,8 @@
   "license": "ISC",
   "homepage": "https://github.com/gera2ld/vueleton#readme",
   "files": [
-    "lib"
+    "lib",
+    "scripts"
   ],
   "scripts": {
     "clean": "gulp clean",
