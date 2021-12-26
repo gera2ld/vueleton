@@ -5,6 +5,15 @@
 <script>
 import CodeMirror from 'codemirror';
 
+const modelFields = {
+  value: 'modelValue',
+  update: 'update:modelValue',
+};
+/* vue@2
+modelFields.value = 'value';
+modelFields.update = 'input';
+ */
+
 const defaultOptions = {
   lineNumbers: true,
   tabSize: 2,
@@ -12,9 +21,10 @@ const defaultOptions = {
 
 export default {
   name: 'vl-code',
-  props: ['value', 'options'],
+  props: ['options', modelFields.value],
+  emits: ['ready', modelFields.update],
   watch: {
-    value: 'update',
+    [modelFields.value]: 'update',
     options(options, oldOptions) {
       const { cm } = this;
       if (!cm) return;
@@ -39,7 +49,7 @@ export default {
     );
     this.$emit('ready', this.cm);
     this.cm.on('change', (cm) => {
-      this.$emit('input', (this.cached = cm.getValue()));
+      this.$emit(modelFields.update, (this.cached = cm.getValue()));
     });
     this.update(this.value);
   },

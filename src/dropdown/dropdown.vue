@@ -48,6 +48,7 @@ export default {
       default: 'down',
     },
   },
+  emits: ['stateChange'],
   data() {
     return {
       active: false,

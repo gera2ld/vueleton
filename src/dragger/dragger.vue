@@ -12,6 +12,7 @@ export default {
       default: 200,
     },
   },
+  emits: ['tick', 'update', 'end'],
   data() {
     return {
       dragging: null,

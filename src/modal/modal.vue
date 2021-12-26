@@ -45,6 +45,7 @@ export default {
       default: () => ({ close: true }),
     },
   },
+  emits: ['close', 'afterLeave'],
   methods: {
     onBackdropClick() {
       if (this.backdrop === true || this.backdrop.close) {
@@ -54,7 +55,7 @@ export default {
       }
     },
     onAfterLeave() {
-      this.$emit('after-leave');
+      this.$emit('afterLeave');
     },
   },
 };
