@@ -13,6 +13,7 @@
     "dev": "gulp watch",
     "build": "gulp build",
     "prepublishOnly": "run-s build",
+    "postinstall": "node scripts/postinstall.mjs",
     "lint": "eslint --ext .js,.vue .",
     "ci": "run-s lint"
   },
@@ -38,7 +39,8 @@
     "vue": "^3.2.26"
   },
   "dependencies": {
-    "@babel/runtime": "^7.16.5"
+    "@babel/runtime": "^7.16.5",
+    "globby": "^12.0.2"
   },
   "repository": {
     "type": "git",

@@ -14,8 +14,15 @@
 </template>
 
 <script>
+const components = {
+/* vue@2
+  teleport: () => import('../teleport.vue'),
+ */
+};
+
 export default {
   name: 'vl-modal',
+  components,
   props: {
     modalClass: {
       type: String,

@@ -26,6 +26,13 @@
 <script>
 import TooltipContent from './tooltip-content.vue';
 
+const components = {
+  TooltipContent,
+/* vue@2
+  teleport: () => import('../teleport.vue'),
+ */
+};
+
 const tooltips = [];
 const throttledUpdate = throttleWithRAF(updateTooltips);
 document.addEventListener('scroll', throttledUpdate, true);
@@ -60,9 +67,7 @@ function removeTooltip(tooltip) {
 
 export default {
   name: 'vl-tooltip',
-  components: {
-    TooltipContent,
-  },
+  components,
   props: {
     active: {
       type: Boolean,
