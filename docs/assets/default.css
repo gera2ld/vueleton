@@ -81,7 +81,8 @@ blockquote {
   }
 }
 
-code {
+code,
+.hljs {
   padding: 3px;
   background: #f0f0f0;
 }

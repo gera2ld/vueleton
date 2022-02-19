@@ -13,6 +13,7 @@ module.exports = {
   },
   loading: { color: '#3B8070' },
   css: [
+    'highlight.js/styles/github.css',
     '~/assets/default.css',
   ],
   build: {

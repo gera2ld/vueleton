@@ -5,7 +5,6 @@
 <script>
 import { marked } from 'marked';
 import hljs from 'highlight.js/lib/core';
-import 'highlight.js/styles/github.css';
 import xml from 'highlight.js/lib/languages/xml';
 import javascript from 'highlight.js/lib/languages/javascript';
 import shell from 'highlight.js/lib/languages/shell';
