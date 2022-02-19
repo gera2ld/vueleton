@@ -13,16 +13,24 @@ function copy() {
   return src(['src/**/*', '!**/*.css']).pipe(dest('lib'));
 }
 
+async function postinstall() {
+  const { execa } = await import('execa');
+  await execa('node', ['scripts/postinstall.mjs']);
+}
+
 function css() {
   return src('src/**/*.css').pipe(postcss(plugins, rest)).pipe(dest('lib'));
 }
 
-function watchCss() {
+function dev() {
   watch('src/**/*.css', css);
+  watch(['src/**/*', '!**/*.css'], compile);
 }
+
+const compile = series(copy, postinstall);
 
 exports.clean = clean;
 exports.copy = copy;
 exports.css = css;
 exports.build = series(clean, [copy, css]);
-exports.watch = series([copy, css], watchCss);
+exports.watch = series([compile, css], dev);

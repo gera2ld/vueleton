@@ -31,17 +31,18 @@
     "vue": "2.x || 3.x"
   },
   "devDependencies": {
-    "@gera2ld/plaid": "~2.4.1-alpha.4",
-    "@gera2ld/plaid-common-vue": "~2.4.1-alpha.3",
-    "codemirror": "^5.65.0",
+    "@gera2ld/plaid": "~2.5.0",
+    "@gera2ld/plaid-common-vue": "~2.5.0",
+    "codemirror": "^5.65.1",
     "del": "^6.0.0",
+    "execa": "^6.1.0",
     "gulp": "^4.0.2",
     "gulp-postcss": "^9.0.1",
-    "vue": "^3.2.26"
+    "vue": "^3.2.31"
   },
   "dependencies": {
-    "@babel/runtime": "^7.16.5",
-    "globby": "^12.0.2"
+    "@babel/runtime": "^7.17.2",
+    "globby": "^13.1.1"
   },
   "repository": {
     "type": "git",

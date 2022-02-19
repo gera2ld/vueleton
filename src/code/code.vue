@@ -4,15 +4,7 @@
 
 <script>
 import CodeMirror from 'codemirror';
-
-const modelFields = {
-  value: 'modelValue',
-  update: 'update:modelValue',
-};
-/* vue@2
-modelFields.value = 'value';
-modelFields.update = 'input';
- */
+import { modelFields } from '../util';
 
 const defaultOptions = {
   lineNumbers: true,

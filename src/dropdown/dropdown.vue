@@ -12,76 +12,92 @@
     >
       <slot name="toggle"></slot>
     </div>
-    <div class="vl-dropdown-menu" v-show="active" @mousedown.stop>
+    <div class="vl-dropdown-menu" v-show="open" @mousedown.stop>
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
+import { modelFields } from '../util';
+
 export default {
   name: 'vl-dropdown',
   props: {
-    // If true, the dropdown menu will close on menu clicked.
+    /**
+     * If true, the dropdown menu will close on menu clicked.
+     */
     closeAfterClick: {
       type: Boolean,
       default: false,
     },
-    // If true, the dropdown menu will always open on toggle clicked.
-    toggleOnOnly: {
-      type: Boolean,
-      default: false,
-    },
-    // If true, the dropdown menu will open on toggle focused.
+    /**
+     * If true, the dropdown menu will open on toggle focused.
+     */
     focusOpen: {
       type: Boolean,
       default: false,
     },
-    // Set alignment of the dropdown menu, either 'left' or 'right'.
+    /**
+     * Set alignment of the dropdown menu, either 'left' or 'right'.
+     */
     align: {
       type: String,
       default: 'left',
     },
-    // Set direction of the dropdown menu, either 'down' or 'up'.
+    /**
+     * Set direction of the dropdown menu, either 'down' or 'up'.
+     */
     direction: {
       type: String,
       default: 'down',
     },
+    /**
+     * Whether to show dropdown.
+     */
+    [modelFields.value]: {
+      type: Boolean,
+      default: false,
+    },
   },
-  emits: ['stateChange'],
+  emits: [modelFields.update],
   data() {
     return {
-      active: false,
+      open: this.modelValue,
     };
   },
   watch: {
-    active(active, formerActive) {
-      if (active === formerActive) return;
-      if (active) {
+    [modelFields.value](value) {
+      this.open = value;
+    },
+    open(value, prevValue) {
+      if (value === prevValue) return;
+      if (value) {
         document.addEventListener('mousedown', this.onClose, false);
       } else {
         document.removeEventListener('mousedown', this.onClose, false);
       }
-      this.$emit('stateChange', active);
     },
   },
   methods: {
     onToggle() {
-      this.active = !this.active;
-    },
-    onOpen() {
-      this.active = true;
+      this.open = !this.open;
+      this.$emit(modelFields.update, this.open);
     },
     onClose() {
-      this.active = false;
+      if (this.open) this.onToggle();
     },
     onFocus() {
-      if (this.focusOpen) this.onOpen();
+      if (this.focusOpen && !this.open) this.onToggle();
     },
     onBlur() {
       const { activeElement } = document;
-      if (activeElement !== document.body && !this.$el.contains(activeElement))
+      if (
+        activeElement !== document.body &&
+        !this.$el.contains(activeElement)
+      ) {
         this.onClose();
+      }
     },
     onMouseUp() {
       if (this.closeAfterClick) this.onClose();
