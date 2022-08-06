@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>Dropdown</h3>
+    <h1>Dropdown</h1>
     <vl-dropdown class="demo-dropdown" :closeAfterClick="true">
       <template v-slot:toggle>
         <button>Toggle</button>

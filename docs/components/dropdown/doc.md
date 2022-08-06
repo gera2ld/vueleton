@@ -1,4 +1,4 @@
-### Usage
+## Usage
 
 ``` html
 <vl-dropdown :closeAfterClick="true">
@@ -13,7 +13,7 @@
 import VlDropdown from 'vueleton/lib/dropdown';
 ```
 
-### API
+## API
 
 Show a menu next to the toggle.
 

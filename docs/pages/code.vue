@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>Code</h3>
+    <h1>Code</h1>
     <div v-text="message"></div>
     <select v-model="mode">
       <option v-for="mode in modes" v-text="mode"></option>

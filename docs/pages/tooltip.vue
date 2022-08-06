@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>Tooltip</h3>
+    <h1>Tooltip</h1>
     Alignment:
     <div class="demo-tooltip-group">
       <vl-tooltip placement="top" align="end" content="hello, world">

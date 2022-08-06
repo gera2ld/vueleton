@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>Modal</h3>
+    <h1>Modal</h1>
     <button @click="onShow">Show modal</button>
     <vl-modal transition="fade" :show="show" @close="onClose">
       <div class="demo-modal-body">

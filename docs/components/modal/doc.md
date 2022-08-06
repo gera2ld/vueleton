@@ -1,4 +1,4 @@
-### Usage
+## Usage
 
 ``` html
 <button @click="show = true">Show modal</button>
@@ -13,7 +13,7 @@
 import VlModal from 'vueleton/lib/modal';
 ```
 
-### API
+## API
 
 Show a modal with optional backdrop.
 

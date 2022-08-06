@@ -1,4 +1,4 @@
-### Usage
+## Usage
 
 ``` html
 <vl-code v-model="code" :options="options" @ready="onReady" />
@@ -8,7 +8,7 @@
 import VlCode from 'vueleton/lib/code';
 ```
 
-### API
+## API
 
 Props         | Description                         | Default
 --------------|-------------------------------------|---------
