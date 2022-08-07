@@ -4,8 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt generate && touch dist/.nojekyll"
+    "dev:lib": "cd .. && VUELETON_VUE_VERSION=2 yarn dev",
+    "dev:doc": "yarn build:lib && nuxt",
+    "dev": "run-p dev:lib dev:doc",
+    "build:lib": "cd .. && VUELETON_VUE_VERSION=2 yarn build",
+    "build:doc": "yarn build:lib && nuxt generate && touch dist/.nojekyll",
+    "build": "run-s build:lib build:doc"
   },
   "devDependencies": {
     "@gera2ld/plaid": "~2.5.0",

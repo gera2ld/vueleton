@@ -1,13 +1,15 @@
 # Vueleton Documentation
 
+This documentation is built with Nuxt@2 using Vue@2. However the components support both Vue@2 and Vue@3. I will add demo for Vue@3 when Nuxt@3 is out.
+
 ## Development
 
 ```bash
-# Compile Vueleton
-$ cd path/to/vueleton
-$ VUELETON_VUE_VERSION=2 yarn dev
-
-# Compile Vueleton docs
-$ cd docs
 $ yarn dev
+```
+
+## Build
+
+```bash
+$ yarn build
 ```
