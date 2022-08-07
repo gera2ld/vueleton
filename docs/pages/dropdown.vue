@@ -2,45 +2,59 @@
   <section>
     <h1>Dropdown</h1>
     <vl-dropdown class="demo-dropdown" :closeAfterClick="true">
-      <template v-slot:toggle>
-        <button>Toggle</button>
+      <button>Toggle</button>
+      <template v-slot:content>
+        <div class="demo-dropdown-item">Menu Item 1</div>
+        <div class="demo-dropdown-item">Menu Item 2</div>
+        <div class="demo-dropdown-item">Menu Item 3</div>
       </template>
-      <div class="demo-dropdown-item">Menu Item 1</div>
-      <div class="demo-dropdown-item">Menu Item 2</div>
-      <div class="demo-dropdown-item">Menu Item 3</div>
     </vl-dropdown>
     <vl-dropdown class="demo-dropdown">
-      <template v-slot:toggle>
-        <button>Toggle panel</button>
+      <button>Toggle panel</button>
+      <template v-slot:content>
+        <div class="demo-panel">This is a panel.</div>
       </template>
-      <div class="demo-panel">
-        This is a panel.
-      </div>
     </vl-dropdown>
     <vl-dropdown class="demo-dropdown" :closeAfterClick="true" direction="up">
-      <template v-slot:toggle>
-        <button>Toggle up</button>
+      <button>Toggle up</button>
+      <template v-slot:content>
+        <div class="demo-dropdown-item">Menu Item 1</div>
+        <div class="demo-dropdown-item">Menu Item 2</div>
+        <div class="demo-dropdown-item">Menu Item 3</div>
       </template>
-      <div class="demo-dropdown-item">Menu Item 1</div>
-      <div class="demo-dropdown-item">Menu Item 2</div>
-      <div class="demo-dropdown-item">Menu Item 3</div>
     </vl-dropdown>
     <vl-dropdown class="demo-dropdown" :closeAfterClick="true" align="right">
-      <template v-slot:toggle>
-        <button>Toggle right</button>
+      <button>Toggle right</button>
+      <template v-slot:content>
+        <div class="demo-dropdown-item">Menu Item 1</div>
+        <div class="demo-dropdown-item">Menu Item 2</div>
+        <div class="demo-dropdown-item">Menu Item 3</div>
       </template>
-      <div class="demo-dropdown-item">Menu Item 1</div>
-      <div class="demo-dropdown-item">Menu Item 2</div>
-      <div class="demo-dropdown-item">Menu Item 3</div>
     </vl-dropdown>
     <div class="demo-dropdown-menu-bar">
-      <vl-dropdown class="demo-dropdown" :closeAfterClick="true" v-for="(menu, i) in menuBar" :key="i" :value="active === i" @input="value => onToggle(i, value)">
-        <template v-slot:toggle>
-          <div :class="{ active: active === i }" v-text="menu[0]" @mouseover="onHover(i)"></div>
+      <vl-dropdown
+        class="demo-dropdown"
+        :closeAfterClick="true"
+        v-for="(menu, i) in menuBar"
+        :key="i"
+        :value="active === i"
+        @input="(value) => onToggle(i, value)"
+      >
+        <div
+          :class="{ active: active === i }"
+          v-text="menu[0]"
+          @mouseover="onHover(i)"
+        ></div>
+        <template v-slot:content>
+          <div>
+            <div
+              class="demo-dropdown-menu-item"
+              v-for="(item, j) in menu[1]"
+              :key="j"
+              v-text="item"
+            ></div>
+          </div>
         </template>
-        <div>
-          <div class="demo-dropdown-menu-item" v-for="(item, j) in menu[1]" :key="j" v-text="item"></div>
-        </div>
       </vl-dropdown>
     </div>
   </section>

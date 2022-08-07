@@ -10,10 +10,12 @@
       @focus="onFocus"
       @blur="onBlur"
     >
-      <slot name="toggle"></slot>
+      <slot></slot>
     </div>
     <div class="vl-dropdown-menu" v-show="open" @mousedown.stop>
-      <slot></slot>
+      <slot name="content">
+        {{ content }}
+      </slot>
     </div>
   </div>
 </template>
@@ -51,6 +53,12 @@ export default {
     direction: {
       type: String,
       default: 'down',
+    },
+    /**
+     * Content of dropdown, can be overriden by `v-slot:content`.
+     */
+    content: {
+      type: String,
     },
     /**
      * Whether to show dropdown.
