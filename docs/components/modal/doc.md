@@ -2,9 +2,10 @@
 
 ``` html
 <button @click="show = true">Show modal</button>
-<vl-modal :show="show" @close="show = false">
-  <div class="content">
-    <p>This is modal body.</p>
+<vl-modal transition="fade" :show="show" @close="show = false">
+  <div class="demo-modal-body">
+    <h1>Predefined Modal</h1>
+    <button @click="onClose">Close</button>
   </div>
 </vl-modal>
 ```
