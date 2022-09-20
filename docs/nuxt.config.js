@@ -18,7 +18,10 @@ module.exports = {
   ],
   build: {
     extend(config) {
-      config.resolve.alias.vueleton = path.resolve(__dirname, '..');
+      Object.assign(config.resolve.alias, {
+        vue: require.resolve('vue'),
+        vueleton: path.resolve(__dirname, '..'),
+      });
       config.module.rules.push({
         test: /\.md$/,
         loader: 'raw-loader',

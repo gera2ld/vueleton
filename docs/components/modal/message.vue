@@ -1,6 +1,15 @@
 <template>
-  <div class="demo-modal-message">Hello, world!</div>
+  <div class="demo-modal-message">
+    <h1>Modal API</h1>
+    <p>Hello, world</p>
+  </div>
 </template>
+
+<script>
+export default {
+  props: ['name'],
+};
+</script>
 
 <style>
 .demo-modal-message {

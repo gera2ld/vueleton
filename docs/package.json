@@ -5,16 +5,16 @@
   "license": "MIT",
   "scripts": {
     "dev:lib": "cd .. && VUELETON_VUE_VERSION=2 yarn dev",
-    "dev:doc": "yarn build:lib && nuxt",
+    "dev:doc": "sleep 2 && nuxt",
     "dev": "run-p dev:lib dev:doc",
     "build:lib": "cd .. && VUELETON_VUE_VERSION=2 yarn build",
     "build:doc": "yarn build:lib && nuxt generate && touch dist/.nojekyll",
     "build": "run-s build:lib build:doc"
   },
   "devDependencies": {
-    "@gera2ld/plaid": "~2.5.0",
-    "highlight.js": "^11.4.0",
-    "marked": "^4.0.12",
+    "@gera2ld/plaid": "~2.5.6",
+    "highlight.js": "^11.6.0",
+    "marked": "^4.1.0",
     "nuxt": "^2.15.8",
     "postcss-nested": "^4.2.3",
     "raw-loader": "^4.0.2"

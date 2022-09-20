@@ -1,12 +1,12 @@
 const { src, dest, series, watch } = require('gulp');
-const del = require('del');
 const postcss = require('gulp-postcss');
 const { combineConfigSync } = require('@gera2ld/plaid/util');
 
 const { plugins, ...rest } = combineConfigSync({}, [require('@gera2ld/plaid/postcss/base')]);
 
-function clean() {
-  return del(['lib']);
+async function clean() {
+  const { deleteAsync } = await import('del');
+  return deleteAsync(['lib']);
 }
 
 function copy() {

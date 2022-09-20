@@ -2,9 +2,10 @@
   <section>
     <h1>Modal</h1>
     <button @click="onShow">Show modal</button>
+    <button @click="onShowAPI">Call modal API</button>
     <vl-modal transition="fade" :show="show" @close="onClose">
       <div class="demo-modal-body">
-        <h1>Hello, world!</h1>
+        <h1>Predefined Modal</h1>
         <button @click="onClose">Close</button>
       </div>
     </vl-modal>
@@ -32,6 +33,11 @@ export default {
   methods: {
     onShow() {
       this.show = true;
+    },
+    onShowAPI() {
+      VlModal.show(Message, {
+        transition: 'in-out',
+      });
     },
     onClose() {
       this.show = false;
