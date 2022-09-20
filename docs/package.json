@@ -7,8 +7,8 @@
     "dev:lib": "cd .. && VUELETON_VUE_VERSION=2 yarn dev",
     "dev:doc": "sleep 2 && nuxt",
     "dev": "run-p dev:lib dev:doc",
-    "build:lib": "cd .. && VUELETON_VUE_VERSION=2 yarn build",
-    "build:doc": "yarn build:lib && nuxt generate && touch dist/.nojekyll",
+    "build:lib": "cd .. && yarn build && VUELETON_VUE_VERSION=2 yarn postinstall",
+    "build:doc": "nuxt generate && touch dist/.nojekyll",
     "build": "run-s build:lib build:doc"
   },
   "devDependencies": {
