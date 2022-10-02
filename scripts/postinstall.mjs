@@ -16,7 +16,8 @@ async function setVersion(vueVersion, file) {
 
 async function getVueVersion() {
   if (process.env.VUELETON_VUE_VERSION) return process.env.VUELETON_VUE_VERSION;
-  const { version } = await import('vue');
+  const module = await import('vue');
+  const version = module.version ?? module.default.version;
   return version.split('.')[0];
 }
 
