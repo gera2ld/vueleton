@@ -25,12 +25,13 @@
 
 <script>
 import TooltipContent from './tooltip-content.vue';
+import { lifecyleBeforeUnmount } from '../util';
 
 const components = {
   TooltipContent,
-/* vue@2
+/* vue@2 <<
   teleport: () => import('../teleport.vue'),
- */
+>> */
 };
 
 const tooltips = [];
@@ -178,7 +179,7 @@ export default {
   mounted() {
     this.render();
   },
-  beforeUnmount() {
+  [lifecyleBeforeUnmount]() {
     removeTooltip(this);
   },
 };

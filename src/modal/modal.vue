@@ -15,9 +15,9 @@
 
 <script>
 const components = {
-/* vue@2
+/* vue@2 <<
   teleport: () => import('../teleport.vue'),
- */
+>> */
 };
 
 export default {
