@@ -8,9 +8,8 @@
     @tiptoggle.stop="hovered = !hovered"
   >
     <slot></slot>
-    <teleport to="body">
+    <teleport to="body" v-if="tooltip">
       <TooltipContent
-        v-if="tooltip"
         :placement="tooltip.placement"
         :align="tooltip.align"
         :style="tooltip.style"
