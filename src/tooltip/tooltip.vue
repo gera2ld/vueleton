@@ -24,7 +24,7 @@
 
 <script>
 import TooltipContent from './tooltip-content.vue';
-import { lifecyleBeforeUnmount } from '../util';
+import { lifecycleBeforeUnmount } from '../util';
 
 const components = {
   TooltipContent,
@@ -178,7 +178,7 @@ export default {
   mounted() {
     this.render();
   },
-  [lifecyleBeforeUnmount]() {
+  [lifecycleBeforeUnmount]() {
     removeTooltip(this);
   },
 };

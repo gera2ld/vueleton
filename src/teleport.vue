@@ -8,7 +8,7 @@
 /**
  * This is a simple polyfill for porting Vue 3 built-in component teleport to Vue 2.
  */
-import { lifecyleBeforeUnmount } from './util';
+import { lifecycleBeforeUnmount } from './util';
 
 export default {
   props: ['to'],
@@ -18,7 +18,7 @@ export default {
       target.append(this.$el);
     }
   },
-  [lifecyleBeforeUnmount]() {
+  [lifecycleBeforeUnmount]() {
     this.$el.remove();
   },
 };
