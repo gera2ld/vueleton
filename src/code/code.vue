@@ -43,7 +43,7 @@ export default {
     this.cm.on('change', (cm) => {
       this.$emit(modelFields.update, (this.cached = cm.getValue()));
     });
-    this.update(this.value);
+    this.update(this[modelFields.value]);
   },
 };
 </script>
