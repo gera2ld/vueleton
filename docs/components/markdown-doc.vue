@@ -1,5 +1,5 @@
 <template>
-  <section v-html="html" ref="doc"></section>
+  <section v-html="html"></section>
 </template>
 
 <script>
@@ -16,28 +16,10 @@ hljs.registerLanguage('shell', shell);
 hljs.registerLanguage('bash', bash);
 
 export default {
-  props: ['md'],
-  computed: {
-    html() {
-      return marked(this.md || '');
-    },
-  },
-  watch: {
-    html() {
-      // Wait for the DOM to update
-      this.$nextTick(this.initCode);
-    },
-  },
+  props: ['html'],
   mounted() {
-    this.initCode();
-  },
-  methods: {
-    initCode() {
-      const { doc } = this.$refs;
-      if (!doc) return;
-      const code = doc.querySelectorAll('pre>code');
-      code.forEach(el => { hljs.highlightBlock(el); });
-    },
+    const code = this.$el.querySelectorAll('pre>code');
+    code.forEach(el => { hljs.highlightElement(el); });
   },
 };
 </script>

@@ -11,12 +11,12 @@ body {
 }
 
 body,
-// Form elements will not inherit
+/* Form elements will not inherit */
 button,
 select,
 input,
 textarea {
-  font-family: "PingFang SC", STHeiti, "Microsoft YaHei", sans-serif;
+  font-family: "Roboto Slab", serif;
 }
 
 .demo {
@@ -53,7 +53,7 @@ textarea {
     color: #333;
     cursor: pointer;
     &:hover,
-    &.active {
+    &.router-link-active {
       color: dodgerblue;
     }
   }

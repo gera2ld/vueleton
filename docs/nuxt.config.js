@@ -1,27 +1,31 @@
-const path = require('path');
-const IS_PRD = process.env.NODE_ENV === 'production';
+import { resolve } from 'path';
 
-module.exports = {
-  ssr: false,
-  target: 'static',
-  head: {
-    title: 'Vueleton',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    ],
+export default defineNuxtConfig({
+  app: {
+    baseURL: process.env.BASE || '/',
+    head: {
+      title: 'Vueleton',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      ],
+      link: [{
+        href: 'https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap',
+        rel: 'stylesheet',
+      }],
+    },
   },
-  loading: { color: '#3B8070' },
+  ssr: false,
   css: [
     'highlight.js/styles/github.css',
-    '~/assets/default.css',
+    '@/assets/default.css',
   ],
+  alias: {
+    vue: resolve(__dirname, 'node_modules/vue'),
+    vueleton: resolve(__dirname, '..'),
+  },
   build: {
     extend(config) {
-      Object.assign(config.resolve.alias, {
-        vue: require.resolve('vue'),
-        vueleton: path.resolve(__dirname, '..'),
-      });
       config.module.rules.push({
         test: /\.md$/,
         loader: 'raw-loader',
@@ -29,23 +33,17 @@ module.exports = {
     },
     babel: {
       exclude: [
-        path.resolve(__dirname, '../lib'),
+        resolve(__dirname, '../lib'),
         /node_modules/,
       ],
     },
-    postcss: {
-      plugins: [
-        require('postcss-nested'),
-      ],
+  },
+  postcss: {
+    plugins: {
+      'postcss-nested': {},
     },
   },
-};
-
-if (IS_PRD) {
-  Object.assign(module.exports, {
-    router: {
-      base: '/vueleton/',
-    },
-  });
-  module.exports.build.extractCSS = true;
-}
+  webpack: {
+    extractCSS: true,
+  },
+});

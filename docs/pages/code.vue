@@ -5,21 +5,24 @@
     <select v-model="mode">
       <option v-for="mode in modes" v-text="mode"></option>
     </select>
-    <vl-code v-if="mounted" v-model="code" :options="options" @ready="onReady" />
+    <VlCode v-model="code" :options="options" @ready="onReady" />
+    <MarkdownDoc :html="doc" />
   </section>
 </template>
 
 <script>
-import doc from '~/components/code/doc.md';
-import store from '~/assets/store';
+import MarkdownDoc from '~/components/markdown-doc.vue';
+import doc from '~/components/code/doc.md.js';
+import VlCode from '~/components/code/vl-code';
 
 export default {
   components: {
-    VlCode: () => import('~/components/code/vl-code'),
+    MarkdownDoc,
+    VlCode,
   },
   data() {
     return {
-      mounted: false,
+      doc,
       message: '',
       code: `\
 console.log("hello, world");
@@ -50,10 +53,6 @@ Test \`markdown\`.`,
         });
       },
     },
-  },
-  mounted() {
-    this.mounted = true;
-    store.doc = doc;
   },
   methods: {
     onReady(/* cm */) {

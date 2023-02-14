@@ -57,21 +57,23 @@
         </template>
       </vl-dropdown>
     </div>
+    <MarkdownDoc :html="doc" />
   </section>
 </template>
 
 <script>
-import Vue from 'vue';
 import VlDropdown from 'vueleton/lib/dropdown';
-import doc from '~/components/dropdown/doc.md';
-import store from '~/assets/store';
+import MarkdownDoc from '~/components/markdown-doc.vue';
+import doc from '~/components/dropdown/doc.md.js';
 
 export default {
   components: {
+    MarkdownDoc,
     VlDropdown,
   },
   data() {
     return {
+      doc,
       active: -1,
       menuBar: [
         ['Menu 1', ['Item 1', 'Item 2', 'Item 3']],
@@ -97,9 +99,6 @@ export default {
         this.active = index;
       }
     },
-  },
-  mounted() {
-    store.doc = doc;
   },
 };
 </script>

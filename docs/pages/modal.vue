@@ -9,26 +9,26 @@
         <button @click="onClose">Close</button>
       </div>
     </vl-modal>
+    <MarkdownDoc :html="doc" />
   </section>
 </template>
 
 <script>
 import VlModal from 'vueleton/lib/modal';
-import doc from '~/components/modal/doc.md';
+import MarkdownDoc from '~/components/markdown-doc.vue';
+import doc from '~/components/modal/doc.md.js';
 import Message from '~/components/modal/message';
-import store from '~/assets/store';
 
 export default {
   components: {
+    MarkdownDoc,
     VlModal,
   },
   data() {
     return {
+      doc,
       show: false,
     };
-  },
-  mounted() {
-    store.doc = doc;
   },
   methods: {
     onShow() {
@@ -55,9 +55,9 @@ export default {
 }
 
 .in-out {
-  &-appear,
-  &-enter,
-  &-leave-active {
+  &-appear-from,
+  &-enter-from,
+  &-leave-to {
     > .demo-modal-message {
       transform: translateY(-120%);
     }
@@ -73,9 +73,9 @@ export default {
 }
 
 .fade {
-  &-appear,
-  &-enter,
-  &-leave-active {
+  &-appear-from,
+  &-enter-from,
+  &-leave-to {
     > * {
       opacity: 0;
     }

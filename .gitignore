@@ -4,4 +4,8 @@ node_modules
 /es
 *.log
 yarn.lock
+
+# docs
 .nuxt
+.output
+*.md.js

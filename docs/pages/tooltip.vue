@@ -37,26 +37,26 @@
         <button @click="enabled = !enabled" v-text="enabled ? 'Disable' : 'Enable'" />
       </vl-tooltip>
     </div>
+    <MarkdownDoc :html="doc" />
   </section>
 </template>
 
 <script>
 import VlTooltip from 'vueleton/lib/tooltip';
-import doc from '~/components/tooltip/doc.md';
-import store from '~/assets/store';
+import MarkdownDoc from '~/components/markdown-doc.vue';
+import doc from '~/components/tooltip/doc.md.js';
 
 export default {
   components: {
+    MarkdownDoc,
     VlTooltip,
   },
   data() {
     return {
+      doc,
       active: false,
       enabled: false,
     };
-  },
-  mounted() {
-    store.doc = doc;
   },
 };
 </script>

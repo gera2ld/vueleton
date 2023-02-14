@@ -1,16 +1,20 @@
 <template>
   <section>
     Welcome to Vueleton!
+    <MarkdownDoc :html="doc" />
   </section>
 </template>
 
 <script>
-import doc from '~/components/home/doc.md';
-import store from '~/assets/store';
+import MarkdownDoc from '~/components/markdown-doc.vue';
+import doc from '~/components/home/doc.md.js';
 
 export default {
-  mounted() {
-    store.doc = doc;
+  components: {
+    MarkdownDoc,
+  },
+  data() {
+    return { doc };
   },
 };
 </script>
