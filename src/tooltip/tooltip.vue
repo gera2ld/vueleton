@@ -65,6 +65,12 @@ function removeTooltip(tooltip) {
   if (i >= 0) tooltips.splice(i, 1);
 }
 
+const PLACEMENT_TOP = 'top';
+const PLACEMENT_BOTTOM = 'bottom';
+const PLACEMENT_LEFT = 'left';
+const PLACEMENT_RIGHT = 'right';
+const PLACEMENT_AUTO_Y = 'auto-y';
+
 export default {
   name: 'vl-tooltip',
   components,
@@ -79,7 +85,7 @@ export default {
     },
     placement: {
       type: String,
-      default: 'auto-y',
+      default: PLACEMENT_AUTO_Y,
     },
     align: {
       type: String,
@@ -131,39 +137,28 @@ export default {
     },
     update() {
       const rect = this.$el.getBoundingClientRect();
-      let style;
+      let { pageXOffset: left, pageYOffset: top } = window;
       let { placement } = this;
-      if (placement === 'auto-y') {
+      if (placement === PLACEMENT_AUTO_Y) {
         placement =
-          rect.bottom < document.body.clientHeight / 2 ? 'bottom' : 'top';
+          rect.bottom < document.body.clientHeight / 2 ? PLACEMENT_BOTTOM : PLACEMENT_TOP;
       }
-      if (placement === 'top') {
-        style = {
-          top: `${rect.top - this.gap}px`,
-          left: `${rect.left + rect.width / 2}px`,
-        };
-      } else if (placement === 'bottom') {
-        style = {
-          top: `${rect.bottom + this.gap}px`,
-          left: `${rect.left + rect.width / 2}px`,
-        };
-      } else if (placement === 'left') {
-        style = {
-          top: `${rect.top + rect.height / 2}px`,
-          left: `${rect.left - this.gap}px`,
-        };
-      } else if (placement === 'right') {
-        style = {
-          top: `${rect.top + rect.height / 2}px`,
-          left: `${rect.right + this.gap}px`,
-        };
+      if (placement === PLACEMENT_TOP || placement === PLACEMENT_BOTTOM) {
+        left += rect.left + rect.width / 2;
+        top += placement === PLACEMENT_TOP ? rect.top - this.gap : rect.bottom + this.gap;
+      } else if (placement === PLACEMENT_LEFT || placement === PLACEMENT_RIGHT) {
+        top += rect.top + rect.height / 2;
+        left += placement === PLACEMENT_LEFT ? rect.left - this.gap : rect.right + this.gap;
       } else if (process.env.NODE_ENV !== 'production') {
         console.warn(`Unknown placement: ${placement}`);
       }
       this.tooltip = {
         placement,
         align: this.align,
-        style,
+        style: {
+          top: `${top}px`,
+          left: `${left}px`,
+        },
       };
     },
     clean() {
