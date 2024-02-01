@@ -7,7 +7,7 @@
     @tiphide.stop="hovered = false"
     @tiptoggle.stop="hovered = !hovered"
   >
-    <slot></slot>
+    <slot :visible="shouldShow"></slot>
     <teleport to="body" v-if="tooltip">
       <TooltipContent
         :placement="tooltip.placement"
@@ -137,7 +137,7 @@ export default {
     },
     update() {
       const rect = this.$el.getBoundingClientRect();
-      let { pageXOffset: left, pageYOffset: top } = window;
+      let { scrollX: left, scrollY: top } = window;
       let { placement } = this;
       if (placement === PLACEMENT_AUTO_Y) {
         placement =

@@ -10,7 +10,7 @@
       @focus="onFocus"
       @blur="onBlur"
     >
-      <slot></slot>
+      <slot :visible="open"></slot>
     </div>
     <div class="vl-dropdown-menu" v-show="open" @mousedown.stop>
       <slot name="content">
