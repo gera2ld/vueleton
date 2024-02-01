@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "clean": "gulp clean",
-    "dev": "gulp watch",
+    "dev": "gulp dev",
     "build": "gulp build",
     "prepublishOnly": "run-s build",
     "postinstall": "node scripts/postinstall.mjs",
@@ -31,18 +31,18 @@
     "vue": "2.x || 3.x"
   },
   "devDependencies": {
-    "@gera2ld/plaid": "~2.5.6",
-    "@gera2ld/plaid-common-vue": "~2.5.7",
+    "@gera2ld/plaid": "~2.7.0",
+    "@gera2ld/plaid-common-vue": "~2.7.0",
     "codemirror": "^5.65.1",
     "del": "^7.0.0",
-    "execa": "^6.1.0",
+    "execa": "^8.0.1",
     "gulp": "^4.0.2",
     "gulp-postcss": "^9.0.1",
     "vue": "^3.2.39"
   },
   "dependencies": {
     "@babel/runtime": "^7.19.0",
-    "globby": "^13.1.2"
+    "globby": "^14.0.0"
   },
   "repository": {
     "type": "git",

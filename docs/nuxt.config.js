@@ -21,7 +21,6 @@ export default defineNuxtConfig({
     '@/assets/default.css',
   ],
   alias: {
-    vue: resolve(__dirname, 'node_modules/vue'),
     vueleton: resolve(__dirname, '..'),
   },
   build: {
